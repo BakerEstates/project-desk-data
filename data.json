@@ -6,7 +6,13 @@
       "status": "Idea",
       "notes": "Making personal budgeting and core forms automated and simple",
       "createdAt": 1779336862652,
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "mpez99zccttm",
+          "text": "create a master instructions document for how to reconcile and categorize YNAB.",
+          "done": false
+        }
+      ],
       "links": []
     },
     {
