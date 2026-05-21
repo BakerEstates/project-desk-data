@@ -11,6 +11,11 @@
           "id": "mpez6gvqwkhe",
           "text": "Make sure we have a reminder to add the data in after each buyer transaction",
           "done": false
+        },
+        {
+          "id": "mpez6vi7xi3f",
+          "text": "Create ways for clients to be able to interact with their numbers",
+          "done": false
         }
       ],
       "links": []
