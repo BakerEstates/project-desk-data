@@ -15,7 +15,13 @@
       "status": "Active",
       "notes": "",
       "createdAt": 1779348891960,
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "mpf6fjqe8hfz",
+          "text": "Find a way to notify Lisa & Charlotte onces a new intake form is completed",
+          "status": "Not Started"
+        }
+      ],
       "links": [],
       "members": [
         "mpf1ujctq9hs",
@@ -303,7 +309,7 @@
       "members": []
     }
   ],
-  "selectedId": "mpf6exrlq5jf",
+  "selectedId": "mpf6dzy08spx",
   "filter": "all",
   "query": "",
   "team": [
