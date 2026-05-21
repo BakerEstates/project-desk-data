@@ -6,7 +6,13 @@
       "status": "Idea",
       "notes": "I want to make follow up boss operate best with our CORE Forms",
       "createdAt": 1779337173682,
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "mpezfjdrenck",
+          "text": "Figure out the best stages, stages, steps and stuff",
+          "done": false
+        }
+      ],
       "links": []
     },
     {
