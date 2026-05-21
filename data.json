@@ -6,7 +6,13 @@
       "status": "Active",
       "notes": "",
       "createdAt": 1779348791861,
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "mpf6di7pvi5c",
+          "text": "Build a way to link projects to others. Almost like \"sub\" projects. For example. In the overall \"Aframe\" revamp. I need to Add Task templates. But thats not just one simple task. It built on - maintenance tasks, improvement tasks, transaction tasks and more",
+          "status": "Not Started"
+        }
+      ],
       "links": []
     },
     {
