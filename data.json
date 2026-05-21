@@ -16,6 +16,11 @@
           "id": "mpez9vmrxuo6",
           "text": "create a master instructions document for how to take the YNAB numbers and fill out the Core Forms automatically",
           "done": false
+        },
+        {
+          "id": "mpezb161jfqq",
+          "text": "Find a way to \"project\" income based on average spend + deals we have in Aframe tentatively mapped out based on average timeframe from listing agreement to close or contract to close. That way I can look months ahead and be able to make good financial decisions",
+          "done": false
         }
       ],
       "links": []
