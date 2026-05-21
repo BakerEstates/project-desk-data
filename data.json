@@ -33,24 +33,27 @@
       "notes": "",
       "createdAt": 1779348935793,
       "tasks": [],
-      "links": []
+      "links": [],
+      "members": []
     },
     {
       "id": "mpf6dzy08spx",
       "title": "Listing Intake Form",
       "status": "Active",
-      "notes": "",
+      "notes": "f",
       "createdAt": 1779348891960,
       "tasks": [
         {
           "id": "mpf6fjqe8hfz",
           "text": "Find a way to notify Lisa & Charlotte onces a new intake form is completed",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpf6fxh9enlt",
           "text": "Update the Supra number to go to the correct thing",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpf6g3k5mk5u",
@@ -352,7 +355,7 @@
       "members": []
     }
   ],
-  "selectedId": "mpfvsdp8jy81",
+  "selectedId": "mpf6dzy08spx",
   "filter": "all",
   "query": "",
   "team": [
