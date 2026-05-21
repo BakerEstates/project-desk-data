@@ -6,7 +6,13 @@
       "status": "Active",
       "notes": "We are moving back to AFrame. This is the project im working on to make sure we run and operate smoothly\n",
       "createdAt": 1779336296139,
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "mpeyx4staaj2",
+          "text": "Finish the template conditional info sheets",
+          "done": false
+        }
+      ],
       "links": []
     }
   ],
