@@ -10,27 +10,32 @@
         {
           "id": "mpezfjdrenck",
           "text": "Figure out the best stages, stages, steps and stuff",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpezfprzq92l",
           "text": "Update the drip campaignts",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpezfu18fk6e",
           "text": "New buyer campaign",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpezfwdzts59",
           "text": "new seller campaign",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpezfzy62uql",
           "text": "open house campaign",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         }
       ],
       "links": [
@@ -39,7 +44,8 @@
           "url": "https://drive.google.com/drive/folders/1TPCm5Km2_IKnWn8d8ZevptcsEpIWx0dk?usp=sharing",
           "label": "Google Folder"
         }
-      ]
+      ],
+      "members": []
     },
     {
       "id": "mpez862kx06t",
@@ -51,20 +57,24 @@
         {
           "id": "mpez99zccttm",
           "text": "create a master instructions document for how to reconcile and categorize YNAB.",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpez9vmrxuo6",
           "text": "create a master instructions document for how to take the YNAB numbers and fill out the Core Forms automatically",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpezb161jfqq",
           "text": "Find a way to \"project\" income based on average spend + deals we have in Aframe tentatively mapped out based on average timeframe from listing agreement to close or contract to close. That way I can look months ahead and be able to make good financial decisions",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         }
       ],
-      "links": []
+      "links": [],
+      "members": []
     },
     {
       "id": "mpez5u5abrw7",
@@ -76,12 +86,14 @@
         {
           "id": "mpez6gvqwkhe",
           "text": "Make sure we have a reminder to add the data in after each buyer transaction",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpez6vi7xi3f",
           "text": "Create ways for clients to be able to interact with their numbers",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         }
       ],
       "links": [
@@ -90,7 +102,8 @@
           "url": "https://docs.google.com/spreadsheets/d/16w-LrGo1KTnBKig1gQv-z7lMtFtUK4qzZsjOCOltO_Q/edit?usp=sharing",
           "label": "Spreadsheet"
         }
-      ]
+      ],
+      "members": []
     },
     {
       "id": "mpez440r9tqq",
@@ -102,7 +115,8 @@
         {
           "id": "mpez4z1t4tb1",
           "text": "Fill in answers",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         }
       ],
       "links": [
@@ -111,7 +125,8 @@
           "url": "https://docs.google.com/spreadsheets/d/13IRGgygWUR51-EdvIo-3j-hQ7xR_yRhMt9kuuH3gbVM/edit?usp=sharing",
           "label": "Spreadsheet"
         }
-      ]
+      ],
+      "members": []
     },
     {
       "id": "mpeyzu401410",
@@ -123,12 +138,14 @@
         {
           "id": "mpez0lx38k6y",
           "text": "Charlotte needs to go though and do something with the list. I cant remember right now",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpez29yvvm4s",
           "text": "Test",
-          "done": true
+          "status": "Done",
+          "assignee": null
         }
       ],
       "links": [
@@ -137,7 +154,8 @@
           "url": "https://docs.google.com/spreadsheets/d/1kT9eR_pc39DT9RmdajOhVVKRa9OK7ELDwk8t6efKLhA/edit?usp=sharing",
           "label": "SOP Spreadsheet"
         }
-      ]
+      ],
+      "members": []
     },
     {
       "id": "mpeyw0y3osul",
@@ -149,12 +167,14 @@
         {
           "id": "mpeyx4staaj2",
           "text": "Finish the template conditional info sheets",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpeyy38ca4sw",
           "text": "Go through template emails and make sure they sound right. (remember, not every communication needs to be an email. They can be phone calls. Otherwise it leads to the deathtrap of tracking responses)",
-          "done": false
+          "status": "Not Started",
+          "assignee": null
         }
       ],
       "links": [
@@ -163,10 +183,12 @@
           "url": "https://docs.google.com/spreadsheets/d/1B4gf5AS7rPRoQp7nsiLaMwbGuKDnjJda1CDSghTBfBk/edit?usp=sharing",
           "label": "Post Transaction Review Sheet"
         }
-      ]
+      ],
+      "members": []
     }
   ],
   "selectedId": "mpezeu2ak074",
   "filter": "all",
-  "query": ""
+  "query": "",
+  "team": []
 }
