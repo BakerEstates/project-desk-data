@@ -6,7 +6,13 @@
       "status": "Idea",
       "notes": "Making the home health checkup more valuable",
       "createdAt": 1779336753886,
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "mpez6gvqwkhe",
+          "text": "Make sure we have a reminder to add the data in after each buyer transaction",
+          "done": false
+        }
+      ],
       "links": []
     },
     {
