@@ -140,6 +140,25 @@
   .addrow input:focus{border-color:var(--brass)}
   .addrow input::placeholder{color:#b3a894}
 
+  .task{align-items:center}
+  .tfilter{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; padding:0 8px}
+  .tfilter button{display:flex; align-items:center; gap:6px; font-size:11px; letter-spacing:.02em; padding:4px 10px; border-radius:99px; border:1px solid var(--line); color:var(--ink-soft); transition:.12s}
+  .tfilter button:hover{border-color:var(--brass); color:var(--ink)}
+  .tfilter button.on{background:var(--brass-soft); border-color:var(--brass); color:var(--ink); font-weight:600}
+  .tfilter .cdot{width:6px; height:6px; border-radius:50%; flex:0 0 auto}
+  .tfilter .ct{font-family:"JetBrains Mono",monospace; font-size:10px; opacity:.6}
+
+  .statuschip{position:relative; flex:0 0 auto}
+  .chip-btn{display:flex; align-items:center; gap:7px; min-width:118px; padding:6px 11px; border-radius:99px; border:1px solid var(--line); background:var(--bg-2); font-size:11.5px; font-weight:600; letter-spacing:.01em; color:var(--ink-soft); white-space:nowrap; transition:.12s}
+  .chip-btn:hover{background:var(--bg-3)}
+  .chip-btn .cdot{width:8px; height:8px; border-radius:50%; flex:0 0 auto}
+  .chip-menu{position:absolute; z-index:25; top:calc(100% + 6px); left:0; background:var(--bg-2); border:1px solid var(--line); border-radius:11px; box-shadow:var(--shadow); padding:5px; min-width:162px; display:none}
+  .chip-menu.open{display:block; animation:rise .12s ease both}
+  .chip-menu button{display:flex; align-items:center; gap:9px; width:100%; text-align:left; padding:8px 11px; border-radius:8px; font-size:13px; color:var(--ink-soft); transition:.1s}
+  .chip-menu button:hover{background:var(--bg-3); color:var(--ink)}
+  .chip-menu button.sel{color:var(--ink); font-weight:600}
+  .chip-menu .cdot{width:9px; height:9px; border-radius:50%; flex:0 0 auto}
+
   .link{display:flex; align-items:center; gap:12px; padding:11px 13px; background:var(--bg-2); border:1px solid var(--line); border-radius:var(--r-sm); margin-bottom:8px; transition:.14s}
   .link:hover{border-color:var(--line-soft); background:var(--bg-3)}
   .link .ico{flex:0 0 auto; width:30px; height:30px; border-radius:8px; display:grid; place-items:center; font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:600; color:#fff}
@@ -156,6 +175,63 @@
   .linkadd button{flex:0 0 auto; background:var(--bg-4); border:1px solid var(--line); border-radius:9px; padding:0 16px; font-size:13px; font-weight:600; color:var(--ink-soft); transition:.15s}
   .linkadd button:hover{border-color:var(--brass); color:var(--ink)}
   .empty-note{color:var(--muted); font-size:13.5px; font-style:italic; padding:4px 2px 2px}
+
+  /* avatars */
+  .av{display:inline-grid; place-items:center; border-radius:50%; overflow:hidden; flex:0 0 auto; font-weight:700; color:#fff; line-height:1; background:var(--bg-4)}
+  .av img{width:100%; height:100%; object-fit:cover; display:block}
+  .av.none{background:transparent; border:1.5px dashed var(--line); color:var(--muted); font-weight:400}
+
+  /* project roster */
+  .memberrow{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  .mchip{display:flex; align-items:center; gap:8px; padding:4px 10px 4px 4px; border-radius:99px; border:1px solid var(--line); background:var(--bg-2)}
+  .mchip .nm{font-weight:600; font-size:13px}
+  .mchip .x{color:var(--muted); font-size:15px; line-height:1; padding:0 2px; border-radius:5px; transition:.12s}
+  .mchip .x:hover{color:var(--danger); background:rgba(192,67,47,.1)}
+  .addppl{position:relative}
+  .addppl-btn{display:flex; align-items:center; gap:6px; padding:7px 13px; border-radius:99px; border:1px dashed var(--line); color:var(--ink-soft); font-size:12.5px; font-weight:600; transition:.12s}
+  .addppl-btn:hover{border-color:var(--brass); color:var(--ink)}
+  .teamhint{color:var(--muted); font-size:13.5px; font-style:italic; display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+  .teamhint button{font-style:normal; color:var(--brass); font-weight:600}
+  .teamhint button:hover{color:var(--brass-hi)}
+
+  /* shared popover menus (assignee + roster) */
+  .assignchip{position:relative; flex:0 0 auto}
+  .assignee{display:grid; place-items:center; border-radius:50%; transition:transform .12s}
+  .assignee:hover{transform:scale(1.08)}
+  .popmenu{position:absolute; z-index:25; top:calc(100% + 6px); left:0; background:var(--bg-2); border:1px solid var(--line); border-radius:11px; box-shadow:var(--shadow); padding:5px; min-width:172px; display:none; max-height:248px; overflow-y:auto}
+  .popmenu.right{right:0; left:auto}
+  .popmenu.open{display:block; animation:rise .12s ease both}
+  .popmenu button{display:flex; align-items:center; gap:9px; width:100%; text-align:left; padding:7px 10px; border-radius:8px; font-size:13px; color:var(--ink-soft); transition:.1s}
+  .popmenu button:hover{background:var(--bg-3); color:var(--ink)}
+  .popmenu button.sel{color:var(--ink); font-weight:600}
+  .popmenu .ck{margin-left:auto; color:var(--brass)}
+  .popmenu .mut{color:var(--muted); font-size:12px; padding:8px 10px; line-height:1.4}
+
+  /* team modal */
+  .team-list{padding:4px 26px 0; display:flex; flex-direction:column; gap:8px}
+  .tmember{display:flex; align-items:center; gap:12px; padding:9px 12px; border:1px solid var(--line); border-radius:12px; background:var(--bg-2)}
+  .tmember .info{flex:1; min-width:0}
+  .tmember .nm{font-weight:600}
+  .tmember .pos{color:var(--muted); font-size:12.5px}
+  .tmember .ib{width:30px; height:30px; border-radius:8px; display:grid; place-items:center; color:var(--muted); transition:.12s}
+  .tmember .ib:hover{background:var(--bg-3); color:var(--ink)}
+  .tmember .ib.del:hover{color:var(--danger); background:rgba(192,67,47,.1)}
+  .tmember .ib svg{width:15px; height:15px}
+  .team-empty{padding:6px 26px 0; color:var(--muted); font-size:13.5px; font-style:italic}
+  .team-form{margin:14px 26px 4px; padding:16px; border:1px dashed var(--line); border-radius:13px; background:var(--bg)}
+  .team-form .ttl{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass); margin-bottom:12px}
+  .team-form .frow{display:flex; gap:14px; align-items:flex-start}
+  .tf-photo{flex:0 0 auto; position:relative; cursor:pointer; border-radius:50%}
+  .tf-photo .hint{position:absolute; inset:0; display:grid; place-items:center; background:rgba(0,0,0,.4); color:#fff; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; border-radius:50%; opacity:0; transition:.15s}
+  .tf-photo:hover .hint{opacity:1}
+  .tf-fields{flex:1; display:flex; flex-direction:column; gap:9px}
+  .team-form input{width:100%; background:var(--bg-2); border:1px solid var(--line); border-radius:9px; padding:10px 12px; font-size:14px; outline:none; transition:border-color .15s}
+  .team-form input:focus{border-color:var(--brass)}
+  .team-form .actions{display:flex; gap:8px; margin-top:13px; align-items:center; flex-wrap:wrap}
+  .btn-sm{background:var(--brass); color:#221a0c; font-weight:600; padding:9px 16px; border-radius:9px; font-size:13px; transition:.15s}
+  .btn-sm:hover{background:var(--brass-hi)}
+  .btn-sm.ghosty{background:none; border:1px solid var(--line); color:var(--ink-soft)}
+  .btn-sm.ghosty:hover{border-color:var(--brass); color:var(--ink)}
 
   .toast{position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--bg-4); border:1px solid var(--line); color:var(--ink); padding:11px 18px; border-radius:99px; font-size:13px; box-shadow:var(--shadow); opacity:0; pointer-events:none; transition:.3s; z-index:80}
   .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
@@ -230,6 +306,7 @@
       <button class="syncpill" id="syncPill"><span class="sdot"></span><span class="stxt" id="syncTxt">Not connected</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 6.6 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7H1a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 2.6 6.6a1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H7a1.6 1.6 0 0 0 1-1.5V1a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V7a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
       </button>
+      <button class="ghost" id="teamBtn" style="width:100%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13A4 4 0 0 1 16 11"/></svg>Team</button>
       <div class="foot-row">
         <button class="ghost" id="exportBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 21h14"/></svg>Export</button>
         <button class="ghost" id="importBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21V9m0 0 4 4m-4-4-4 4"/><path d="M5 3h14"/></svg>Import</button>
@@ -260,6 +337,14 @@
   var CACHE_KEY="bakerEstates.projectDesk.cache";
   var STATUSES=["Idea","Active","On Hold","Done"];
   var SCOLOR={"Idea":"var(--idea)","Active":"var(--active)","On Hold":"var(--hold)","Done":"var(--done)"};
+  var TSTATUS=["Not Started","In Progress","Waiting On","Done"];
+  var TSCOLOR={"Not Started":"#9b958a","In Progress":"#3f78c0","Waiting On":"#c98a3c","Done":"#3f9268"};
+  var TORDER={"In Progress":0,"Waiting On":1,"Not Started":2,"Done":3};
+  var taskFilter="all";
+  var modalView="sync", teamEditId=null, formName="", formPos="", formPhoto="";
+  // upgrade older tasks (done:true/false) to the new status model
+  function migrate(){ if(!state.team) state.team=[]; (state.projects||[]).forEach(function(p){ if(!p.members) p.members=[]; (p.tasks||[]).forEach(function(t){ if(!t.status){ t.status = t.done?"Done":"Not Started"; } delete t.done; if(typeof t.assignee==="undefined") t.assignee=null; }); }); }
+  function closeAllMenus(){ var m=document.querySelectorAll(".chip-menu.open, .popmenu.open"); for(var i=0;i<m.length;i++) m[i].classList.remove("open"); }
 
   // ---- config (where the data lives) ----
   var cfg=loadJSON(CFG_KEY) || {owner:"",repo:"",path:"data.json",token:"",branch:"main"};
@@ -294,6 +379,27 @@
     if(u.indexOf("drive.google.com")>-1) return {k:"Drive",c:"#1fa463",t:"\u25B3"};
     if(u.indexOf("notion.")>-1) return {k:"Notion",c:"#222",t:"N"};
     return {k:"Link",c:"#c79a52",t:"\u2197"};
+  }
+
+  // ---- team / avatar helpers ----
+  function memberById(id){ var tm=state.team||[]; for(var i=0;i<tm.length;i++) if(tm[i].id===id) return tm[i]; return null; }
+  function initials(name){ var p=(name||"").trim().split(/\s+/); var a=(p[0]||"")[0]||""; var b=p.length>1?(p[p.length-1][0]||""):""; return (a+b).toUpperCase()||"?"; }
+  var AVPAL=["#a9772a","#3f78c0","#3f9268","#b3683a","#7c6cae","#3f9aa0","#b0506a","#5f7d3a"];
+  function avColor(name){ var h=0,s=name||"x"; for(var i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return AVPAL[h%AVPAL.length]; }
+  function avatar(member, size){
+    var px=size+"px";
+    if(member && member.photo) return '<span class="av" style="width:'+px+';height:'+px+'"><img src="'+member.photo+'" alt=""></span>';
+    if(member) return '<span class="av" style="width:'+px+';height:'+px+';font-size:'+Math.round(size*0.4)+'px;background:'+avColor(member.name)+'">'+esc(initials(member.name))+'</span>';
+    return '<span class="av none" style="width:'+px+';height:'+px+';font-size:'+Math.round(size*0.55)+'px">+</span>';
+  }
+  function photoFromFile(file, cb){
+    var r=new FileReader();
+    r.onload=function(){ var img=new Image(); img.onload=function(){
+      var S=128, c=document.createElement("canvas"); c.width=S; c.height=S; var ctx=c.getContext("2d");
+      var s=Math.min(img.width,img.height), sx=(img.width-s)/2, sy=(img.height-s)/2;
+      try{ ctx.drawImage(img,sx,sy,s,s,0,0,S,S); cb(c.toDataURL("image/jpeg",0.78)); }catch(e){ cb(""); }
+    }; img.onerror=function(){ cb(""); }; img.src=r.result; };
+    r.readAsDataURL(file);
   }
 
   // =================== GitHub sync layer ===================
@@ -334,7 +440,7 @@
             var sel=state.selectedId, fil=state.filter;
             state=data; state.query=""; state.filter=state.filter||fil||"all";
             if(find(sel)) state.selectedId=sel;
-            cacheLocal();
+            migrate(); cacheLocal();
           }
           setSync("idle"); if(showToast) toast("Pulled latest \u2713");
         });
@@ -384,15 +490,17 @@
 
   function newProject(){
     var p={id:uid(),title:"",status:"Idea",notes:"",createdAt:Date.now(),tasks:[],links:[]};
-    state.projects.unshift(p); state.selectedId=p.id; commit();
+    state.projects.unshift(p); state.selectedId=p.id; taskFilter="all"; commit();
     setTimeout(function(){var el=document.getElementById("titleInput"); if(el) el.focus();},30); closeSide();
   }
   function deleteProject(id){
     if(!confirm("Delete this project for good? (It stays recoverable in your GitHub history.)")) return;
     state.projects=state.projects.filter(function(p){return p.id!==id;});
     if(state.selectedId===id) state.selectedId=state.projects.length?state.projects[0].id:null;
-    commit();
+    taskFilter="all"; commit();
   }
+  function toggleProjectMember(p,mid){ if(!p.members) p.members=[]; if(p.members.indexOf(mid)>-1){ removeProjectMember(p,mid); } else { p.members.push(mid); commit(); } }
+  function removeProjectMember(p,mid){ if(p.members) p.members=p.members.filter(function(x){return x!==mid;}); (p.tasks||[]).forEach(function(t){ if(t.assignee===mid) t.assignee=null; }); commit(); }
 
   // =================== render ===================
   function visibleProjects(){
@@ -408,13 +516,13 @@
     if(!state.projects.length){ wrap.innerHTML='<div class="empty-note" style="padding:18px 6px">No projects yet. Hit <b style="color:var(--brass)">+</b> to capture your first idea.</div>'; return; }
     if(!list.length){ wrap.innerHTML='<div class="empty-note" style="padding:18px 6px">Nothing matches that filter.</div>'; return; }
     list.forEach(function(p){
-      var done=p.tasks.filter(function(t){return t.done;}).length, tot=p.tasks.length, pct=tot?Math.round(done/tot*100):0;
+      var done=p.tasks.filter(function(t){return t.status==="Done";}).length, tot=p.tasks.length, pct=tot?Math.round(done/tot*100):0;
       var card=document.createElement("div");
       card.className="pcard"+(p.id===state.selectedId?" sel":"");
       card.innerHTML='<div class="row1"><span class="dot" style="background:'+SCOLOR[p.status]+'"></span>'+
         '<span class="ptitle">'+(esc(p.title)||'<span style="color:var(--muted)">Untitled idea</span>')+'</span></div>'+
         '<div class="meta">'+(tot?'<span class="minibar"><i style="width:'+pct+'%"></i></span><span class="count">'+done+'/'+tot+'</span>':'<span class="count" style="color:var(--muted)">'+p.status+'</span>')+'</div>';
-      card.onclick=function(){ state.selectedId=p.id; cacheLocal(); render(); closeSide(); };
+      card.onclick=function(){ state.selectedId=p.id; taskFilter="all"; cacheLocal(); render(); closeSide(); };
       wrap.appendChild(card);
     });
   }
@@ -426,7 +534,7 @@
         '<button id="emptyNew">Capture an idea</button></div>';
       var b=document.getElementById("emptyNew"); if(b) b.onclick=newProject; return;
     }
-    var done=p.tasks.filter(function(t){return t.done;}).length, tot=p.tasks.length, pct=tot?Math.round(done/tot*100):0;
+    var done=p.tasks.filter(function(t){return t.status==="Done";}).length, tot=p.tasks.length, pct=tot?Math.round(done/tot*100):0;
     var h='<div class="doc"><div class="head"><div class="titlewrap">'+
       '<input id="titleInput" placeholder="Name this project\u2026" value="'+escAttr(p.title)+'">'+
       '<div class="created">Started '+fmtDate(p.createdAt)+'</div></div>'+
@@ -434,12 +542,49 @@
     h+='<div class="statusrow">';
     STATUSES.forEach(function(s){ h+='<button class="sbtn'+(p.status===s?' on':'')+'" data-s="'+s+'" '+(p.status===s?'style="border-color:'+SCOLOR[s]+'"':'')+'><span class="dot" style="background:'+SCOLOR[s]+'"></span>'+s+'</button>'; });
     h+='</div>';
+    h+='<section class="block"><div class="blabel"><h3>On This Project</h3><span class="ln"></span></div><div class="memberrow" id="projMembers">';
+    var tmAll=state.team||[];
+    if(!tmAll.length){
+      h+='<div class="teamhint">No team yet. <button data-act="openteam">Add people on the Team page</button></div>';
+    } else {
+      (p.members||[]).forEach(function(mid){ var mb=memberById(mid); if(!mb) return;
+        h+='<div class="mchip" data-id="'+mid+'">'+avatar(mb,22)+'<span class="nm">'+esc(mb.name)+'</span><button class="x" data-act="pmremove">&times;</button></div>'; });
+      var pmenu=tmAll.map(function(mb){ var on=(p.members||[]).indexOf(mb.id)>-1; return '<button data-pmember="'+mb.id+'">'+avatar(mb,22)+'<span>'+esc(mb.name)+'</span>'+(on?'<span class="ck">\u2713</span>':'')+'</button>'; }).join("");
+      h+='<div class="addppl"><button class="addppl-btn" data-act="pmadd"><span style="font-size:14px;line-height:1">+</span> Add people</button><div class="popmenu" id="pmMenu">'+pmenu+'</div></div>';
+    }
+    h+='</div></section>';
     h+='<section class="block"><div class="blabel"><h3>Idea &amp; Notes</h3><span class="ln"></span></div>'+
       '<textarea class="notes" id="notes" placeholder="What is this? Why does it matter? Brain-dump it here\u2026">'+esc(p.notes)+'</textarea></section>';
     h+='<section class="block"><div class="blabel"><h3>Checklist</h3><span class="ln"></span><span class="pct">'+(tot?pct+'% \u00b7 '+done+'/'+tot:'\u2014')+'</span></div>';
     if(tot) h+='<div class="progress"><i style="width:'+pct+'%"></i></div>';
+    if(tot){
+      var counts={}; TSTATUS.forEach(function(s){counts[s]=0;});
+      p.tasks.forEach(function(t){ counts[t.status]=(counts[t.status]||0)+1; });
+      h+='<div class="tfilter"><button data-tf="all" class="'+(taskFilter==="all"?"on":"")+'">All <span class="ct">'+tot+'</span></button>';
+      TSTATUS.forEach(function(s){ if(counts[s]) h+='<button data-tf="'+s+'" class="'+(taskFilter===s?"on":"")+'"><span class="cdot" style="background:'+TSCOLOR[s]+'"></span>'+s+' <span class="ct">'+counts[s]+'</span></button>'; });
+      h+='</div>';
+    }
     h+='<div id="tasks">';
-    p.tasks.forEach(function(t){ h+='<div class="task'+(t.done?' done':'')+'" data-id="'+t.id+'"><button class="check'+(t.done?' done':'')+'" data-act="toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 6"/></svg></button><div class="txt">'+esc(t.text)+'</div><button class="x" data-act="deltask">&times;</button></div>'; });
+    var roster=(p.members||[]).map(memberById).filter(Boolean);
+    var shownTasks=p.tasks.filter(function(t){ return taskFilter==="all"||t.status===taskFilter; })
+      .map(function(t,i){ return {t:t,i:i}; })
+      .sort(function(a,b){ var ra=TORDER[a.t.status], rb=TORDER[b.t.status]; ra=(ra==null?9:ra); rb=(rb==null?9:rb); return ra!==rb?ra-rb:a.i-b.i; })
+      .map(function(o){ return o.t; });
+    shownTasks.forEach(function(t){
+      var menu=TSTATUS.map(function(s){ return '<button data-status="'+s+'" class="'+(t.status===s?"sel":"")+'"><span class="cdot" style="background:'+TSCOLOR[s]+'"></span>'+s+'</button>'; }).join("");
+      var amb=memberById(t.assignee);
+      var amenu;
+      if(roster.length){
+        amenu=roster.map(function(mb){ return '<button data-assignee="'+mb.id+'" class="'+(t.assignee===mb.id?"sel":"")+'">'+avatar(mb,22)+'<span>'+esc(mb.name)+'</span>'+(t.assignee===mb.id?'<span class="ck">\u2713</span>':'')+'</button>'; }).join("");
+        amenu+='<button data-assignee="">'+avatar(null,22)+'<span>Unassigned</span></button>';
+      } else { amenu='<div class="mut">Add people to this project first</div>'; }
+      h+='<div class="task'+(t.status==="Done"?" done":"")+'" data-id="'+t.id+'">'+
+        '<div class="statuschip"><button class="chip-btn" data-act="statusmenu" style="border-color:'+TSCOLOR[t.status]+'40"><span class="cdot" style="background:'+TSCOLOR[t.status]+'"></span>'+t.status+'</button>'+
+        '<div class="chip-menu">'+menu+'</div></div>'+
+        '<div class="txt">'+esc(t.text)+'</div>'+
+        '<div class="assignchip"><button class="assignee" data-act="assignmenu" title="'+(amb?escAttr("Assigned to "+amb.name):"Assign someone")+'">'+avatar(amb,26)+'</button><div class="popmenu right">'+amenu+'</div></div>'+
+        '<button class="x" data-act="deltask">&times;</button></div>';
+    });
     h+='</div><div class="addrow"><input id="taskInput" placeholder="Add a step, then press Enter\u2026"></div></section>';
     h+='<section class="block"><div class="blabel"><h3>Linked Files &amp; Folders</h3><span class="ln"></span></div><div id="links">';
     if(!p.links.length) h+='<div class="empty-note">Paste a Google Drive, Doc, Sheet, or any link below to keep it within reach.</div>';
@@ -456,13 +601,31 @@
     var notes=document.getElementById("notes");
     notes.addEventListener("input",function(){ p.notes=notes.value; scheduleSave(); });
     var ti=document.getElementById("taskInput");
-    ti.addEventListener("keydown",function(e){ if(e.key==="Enter"&&ti.value.trim()){ p.tasks.push({id:uid(),text:ti.value.trim(),done:false}); commit(); setTimeout(function(){var n=document.getElementById("taskInput"); if(n) n.focus();},20); } });
-    document.getElementById("tasks").addEventListener("click",function(e){
+    ti.addEventListener("keydown",function(e){ if(e.key==="Enter"&&ti.value.trim()){ p.tasks.push({id:uid(),text:ti.value.trim(),status:"Not Started"}); commit(); setTimeout(function(){var n=document.getElementById("taskInput"); if(n) n.focus();},20); } });
+    var tf=document.querySelector(".tfilter");
+    if(tf) tf.addEventListener("click",function(e){ var b=e.target.closest("[data-tf]"); if(!b) return; taskFilter=b.getAttribute("data-tf"); renderDetail(); });
+    var pm=document.getElementById("projMembers");
+    if(pm) pm.addEventListener("click",function(e){
+      var item=e.target.closest("[data-pmember]");
+      if(item){ toggleProjectMember(p,item.getAttribute("data-pmember")); return; }
       var act=e.target.closest("[data-act]"); if(!act) return;
-      var id=e.target.closest(".task").getAttribute("data-id"); var t=null;
-      for(var i=0;i<p.tasks.length;i++) if(p.tasks[i].id===id) t=p.tasks[i];
-      if(act.getAttribute("data-act")==="toggle"){ t.done=!t.done; commit(); }
-      else { p.tasks=p.tasks.filter(function(x){return x.id!==id;}); commit(); }
+      var a=act.getAttribute("data-act");
+      if(a==="openteam"){ openModal("team"); return; }
+      if(a==="pmadd"){ var menu=document.getElementById("pmMenu"); var was=menu.classList.contains("open"); closeAllMenus(); if(!was){ menu.classList.add("open"); e.stopPropagation(); } return; }
+      if(a==="pmremove"){ removeProjectMember(p, e.target.closest(".mchip").getAttribute("data-id")); return; }
+    });
+    document.getElementById("tasks").addEventListener("click",function(e){
+      var row=e.target.closest(".task"); if(!row) return; var id=row.getAttribute("data-id");
+      var t=null; for(var i=0;i<p.tasks.length;i++) if(p.tasks[i].id===id) t=p.tasks[i];
+      var statusItem=e.target.closest("[data-status]");
+      if(statusItem){ t.status=statusItem.getAttribute("data-status"); commit(); return; }
+      var assignItem=e.target.closest("[data-assignee]");
+      if(assignItem){ t.assignee=assignItem.getAttribute("data-assignee")||null; commit(); return; }
+      var act=e.target.closest("[data-act]"); if(!act) return;
+      var a=act.getAttribute("data-act");
+      if(a==="statusmenu"){ var sm=row.querySelector(".chip-menu"); var w1=sm.classList.contains("open"); closeAllMenus(); if(!w1){ sm.classList.add("open"); e.stopPropagation(); } return; }
+      if(a==="assignmenu"){ var am=row.querySelector(".assignchip .popmenu"); var w2=am.classList.contains("open"); closeAllMenus(); if(!w2){ am.classList.add("open"); e.stopPropagation(); } return; }
+      if(a==="deltask"){ p.tasks=p.tasks.filter(function(x){return x.id!==id;}); commit(); }
     });
     function addLink(){ var url=document.getElementById("linkUrl").value.trim(); if(!url) return;
       if(!/^https?:\/\//i.test(url)) url="https://"+url;
@@ -481,9 +644,10 @@
   }
 
   // =================== modal: setup & settings ===================
-  function openModal(){ document.getElementById("scrim").classList.add("show"); renderModal(); }
+  function openModal(view){ modalView=view||"sync"; if(modalView==="team"){ teamEditId=null; formName="";formPos="";formPhoto=""; } document.getElementById("scrim").classList.add("show"); renderModal(); }
   function closeModal(){ document.getElementById("scrim").classList.remove("show"); }
   function renderModal(){
+    if(modalView==="team") return renderTeamModal();
     var m=document.getElementById("modal");
     if(connected()){
       m.innerHTML='<div class="mhead"><div class="kicker">Sync settings</div><h2>You\u2019re connected</h2></div>'+
@@ -544,6 +708,65 @@
       .catch(function(e){ btn.disabled=false; btn.innerHTML="Connect &amp; sync"; merr(typeof e==="string"?e:"Couldn\u2019t connect \u2014 check your details and try again."); });
   }
 
+  // =================== team modal ===================
+  function captureForm(){ var n=document.getElementById("tfName"), p=document.getElementById("tfPos"); if(n) formName=n.value; if(p) formPos=p.value; }
+  function renderTeamModal(){
+    var m=document.getElementById("modal"); var tm=state.team||[]; var editing=teamEditId!=null;
+    var h='<div class="mhead"><div class="kicker">Back-end \u00b7 People</div><h2>Your team</h2></div>'+
+      '<div class="sub">Add everyone here once. Then add them to a project, and each task can be assigned from that project\u2019s roster.</div>';
+    if(tm.length){
+      h+='<div class="team-list">';
+      tm.forEach(function(mb){ h+='<div class="tmember" data-id="'+mb.id+'">'+avatar(mb,40)+
+        '<div class="info"><div class="nm">'+esc(mb.name)+'</div><div class="pos">'+(esc(mb.position)||"\u2014")+'</div></div>'+
+        '<button class="ib" data-act="edit" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>'+
+        '<button class="ib del" data-act="del" title="Remove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2m-9 0 1 14h8l1-14"/></svg></button></div>'; });
+      h+='</div>';
+    } else h+='<div class="team-empty">No team members yet \u2014 add your first below.</div>';
+    var prev = formPhoto?{photo:formPhoto}:(formName?{name:formName}:null);
+    h+='<div class="team-form"><div class="ttl">'+(editing?"Edit member":"Add a member")+'</div><div class="frow">'+
+      '<div class="tf-photo" id="tfPhoto">'+avatar(prev,56)+'<span class="hint">Photo</span></div>'+
+      '<div class="tf-fields"><input id="tfName" placeholder="Full name" value="'+escAttr(formName)+'" autocomplete="off"><input id="tfPos" placeholder="Position / title (e.g. Realtor Partner 1)" value="'+escAttr(formPos)+'" autocomplete="off"></div>'+
+      '</div><input type="file" id="tfFile" accept="image/*" hidden>'+
+      '<div class="actions"><button class="btn-sm" id="tfSave">'+(editing?"Save changes":"Add member")+'</button>'+
+        (editing?'<button class="btn-sm ghosty" id="tfCancel">Cancel</button>':'')+
+        (formPhoto?'<button class="btn-sm ghosty" id="tfRmPhoto">Remove photo</button>':'')+'</div></div>';
+    h+='<div class="mfoot"><button class="btn-text" id="teamDone" style="margin-left:auto">Done</button></div>';
+    m.innerHTML=h; wireTeamModal();
+  }
+  function wireTeamModal(){
+    var list=document.querySelector(".team-list");
+    if(list) list.addEventListener("click",function(e){
+      var row=e.target.closest(".tmember"); if(!row) return; var id=row.getAttribute("data-id");
+      var act=e.target.closest("[data-act]"); if(!act) return;
+      if(act.getAttribute("data-act")==="edit"){ var mb=memberById(id); teamEditId=id; formName=mb.name; formPos=mb.position||""; formPhoto=mb.photo||""; renderTeamModal(); }
+      else delMember(id);
+    });
+    document.getElementById("tfPhoto").onclick=function(){ document.getElementById("tfFile").click(); };
+    document.getElementById("tfFile").onchange=function(e){ var f=e.target.files[0]; if(f) photoFromFile(f,function(d){ captureForm(); formPhoto=d; renderTeamModal(); }); e.target.value=""; };
+    document.getElementById("tfSave").onclick=saveMember;
+    var c=document.getElementById("tfCancel"); if(c) c.onclick=function(){ teamEditId=null;formName="";formPos="";formPhoto=""; renderTeamModal(); };
+    var rp=document.getElementById("tfRmPhoto"); if(rp) rp.onclick=function(){ captureForm(); formPhoto=""; renderTeamModal(); };
+    document.getElementById("teamDone").onclick=closeModal;
+    document.getElementById("tfPos").addEventListener("keydown",function(e){ if(e.key==="Enter") saveMember(); });
+  }
+  function saveMember(){
+    captureForm();
+    if(!formName.trim()){ var n=document.getElementById("tfName"); if(n){ n.focus(); n.style.borderColor="var(--danger)"; } return; }
+    if(!state.team) state.team=[];
+    if(teamEditId){ var mb=memberById(teamEditId); if(mb){ mb.name=formName.trim(); mb.position=formPos.trim(); mb.photo=formPhoto; } }
+    else state.team.push({id:uid(), name:formName.trim(), position:formPos.trim(), photo:formPhoto});
+    teamEditId=null; formName="";formPos="";formPhoto="";
+    scheduleSave(); render(); renderTeamModal(); toast("Team saved");
+  }
+  function delMember(id){
+    var mb=memberById(id); if(!mb) return;
+    if(!confirm("Remove "+(mb.name||"this person")+" from the team? They\u2019ll be unassigned from all projects and tasks.")) return;
+    state.team=(state.team||[]).filter(function(x){return x.id!==id;});
+    (state.projects||[]).forEach(function(p){ if(p.members) p.members=p.members.filter(function(x){return x!==id;}); (p.tasks||[]).forEach(function(t){ if(t.assignee===id) t.assignee=null; }); });
+    if(teamEditId===id){ teamEditId=null;formName="";formPos="";formPhoto=""; }
+    scheduleSave(); render(); renderTeamModal();
+  }
+
   // =================== export / import (manual backup, still handy) ===================
   function exportData(){
     var blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
@@ -555,7 +778,7 @@
     var r=new FileReader();
     r.onload=function(){ try{ var data=JSON.parse(r.result); if(!data||!Array.isArray(data.projects)) throw 0;
       if(!confirm("Import this file? It replaces what\u2019s on screen"+(connected()?" and pushes to GitHub.":"."))) return;
-      state=data; state.query=""; commit(); toast("Imported \u2713");
+      state=data; state.query=""; migrate(); commit(); toast("Imported \u2713");
     }catch(e){ toast("Couldn\u2019t read that file"); } };
     r.readAsText(file);
   }
@@ -574,10 +797,13 @@
   document.getElementById("filters").addEventListener("click",function(e){ var b=e.target.closest("button"); if(!b) return; state.filter=b.getAttribute("data-f"); cacheLocal(); render(); });
   document.getElementById("menuBtn").onclick=openSide;
   document.getElementById("backdrop").onclick=closeSide;
-  document.getElementById("syncPill").onclick=openModal;
+  document.getElementById("syncPill").onclick=function(){ openModal("sync"); };
+  document.getElementById("teamBtn").onclick=function(){ openModal("team"); };
   document.getElementById("scrim").addEventListener("click",function(e){ if(e.target.id==="scrim") closeModal(); });
 
   // boot
+  migrate();
+  document.addEventListener("click", closeAllMenus);
   render();
   if(connected()){ setSync("ok"); pull(false); }
   else { setSync("off","Tap to connect sync"); setTimeout(openModal, 350); }
