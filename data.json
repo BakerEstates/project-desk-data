@@ -11,6 +11,11 @@
           "id": "mpez99zccttm",
           "text": "create a master instructions document for how to reconcile and categorize YNAB.",
           "done": false
+        },
+        {
+          "id": "mpez9vmrxuo6",
+          "text": "create a master instructions document for how to take the YNAB numbers and fill out the Core Forms automatically",
+          "done": false
         }
       ],
       "links": []
