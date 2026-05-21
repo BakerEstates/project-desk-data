@@ -1,6 +1,15 @@
 {
   "projects": [
     {
+      "id": "mpezeu2ak074",
+      "title": "",
+      "status": "Idea",
+      "notes": "",
+      "createdAt": 1779337173682,
+      "tasks": [],
+      "links": []
+    },
+    {
       "id": "mpez862kx06t",
       "title": "Creating an AI finance buddy",
       "status": "Active",
@@ -125,7 +134,7 @@
       ]
     }
   ],
-  "selectedId": "mpez440r9tqq",
+  "selectedId": "mpezeu2ak074",
   "filter": "all",
   "query": ""
 }
