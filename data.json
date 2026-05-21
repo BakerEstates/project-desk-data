@@ -51,6 +51,11 @@
           "text": "Build a way to link projects to others. Almost like \"sub\" projects. For example. In the overall \"Aframe\" revamp. I need to Add Task templates. But thats not just one simple task. It built on - maintenance tasks, improvement tasks, transaction tasks and more",
           "status": "Not Started",
           "assignee": "mpf1ujctq9hs"
+        },
+        {
+          "id": "mpf6hwkj8d6e",
+          "text": "Sometimes Charlotte has free time. i want her to fill her free time with project related stuff. Lets find a way for her to be able to come here, and see all the stuff she can be working on, anything assigned to her task wise so she can grab a simple task and start finishing projects",
+          "status": "Not Started"
         }
       ],
       "links": [],
@@ -320,7 +325,7 @@
       "members": []
     }
   ],
-  "selectedId": "mpf6dzy08spx",
+  "selectedId": "mpf6buph15lh",
   "filter": "all",
   "query": "",
   "team": [
