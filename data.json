@@ -29,7 +29,8 @@
         {
           "id": "mpf6g3k5mk5u",
           "text": "Make sure the showingtime stuff is workign correctly",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": "mpf1uzg0k4ok"
         }
       ],
       "links": [],
