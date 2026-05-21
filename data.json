@@ -6,7 +6,13 @@
       "status": "Idea",
       "notes": "",
       "createdAt": 1779341768715,
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "mpf28vevczj6",
+          "text": "How to auto label transaction emails, then remove the label rules after or hide them",
+          "status": "Not Started"
+        }
+      ],
       "links": []
     },
     {
@@ -226,7 +232,7 @@
       "members": []
     }
   ],
-  "selectedId": "mpf24vjec152",
+  "selectedId": "mpf25bm3itus",
   "filter": "all",
   "query": "",
   "team": [
