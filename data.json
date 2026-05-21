@@ -1,6 +1,15 @@
 {
   "projects": [
     {
+      "id": "mpez440r9tqq",
+      "title": "",
+      "status": "Idea",
+      "notes": "",
+      "createdAt": 1779336673371,
+      "tasks": [],
+      "links": []
+    },
+    {
       "id": "mpeyzu401410",
       "title": "SOP Masterlist",
       "status": "On Hold",
@@ -53,7 +62,7 @@
       ]
     }
   ],
-  "selectedId": "mpeyzu401410",
+  "selectedId": "mpez440r9tqq",
   "filter": "all",
   "query": ""
 }
