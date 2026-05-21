@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Desk · Baker Estates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f1e8; --bg-2:#fffdf9; --bg-3:#f1eade; --bg-4:#e9e1d2;
+    --line:#e4dac9; --line-soft:#eee7da;
+    --ink:#2c2620; --ink-soft:#6b6356; --muted:#9a8f7e;
+    --brass:#a9772a; --brass-hi:#c0913f; --brass-soft:rgba(169,119,42,.12);
+    --idea:#b1862f; --active:#3f9268; --hold:#b3683a; --done:#828c99;
+    --danger:#c0432f; --ok:#3f9268;
+    --r:14px; --r-sm:10px;
+    --shadow:0 22px 55px -28px rgba(90,66,28,.38);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(900px 500px at 88% -8%, rgba(169,119,42,.09), transparent 60%);
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.028;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit}
+  input,textarea{font-family:inherit; color:inherit}
+  ::selection{background:rgba(199,154,82,.3)}
+
+  .shell{position:relative; z-index:1; display:grid; grid-template-columns:312px 1fr; height:100vh; overflow:hidden}
+
+  /* Sidebar */
+  .side{display:flex; flex-direction:column; border-right:1px solid var(--line); background:var(--bg-2); min-height:0}
+  .brand{padding:22px 22px 16px; border-bottom:1px solid var(--line-soft)}
+  .brand .kicker{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--brass)}
+  .brand h1{font-family:"Fraunces",serif; font-weight:600; font-size:25px; margin:5px 0 0; letter-spacing:-.01em}
+  .brand h1 em{font-style:italic; color:var(--brass)}
+
+  .side-tools{padding:14px 16px 10px; display:flex; gap:8px; align-items:center}
+  .search{flex:1; position:relative}
+  .search input{width:100%; background:var(--bg-3); border:1px solid var(--line); border-radius:var(--r-sm); padding:9px 11px 9px 32px; font-size:13.5px; outline:none; transition:border-color .15s}
+  .search input:focus{border-color:var(--brass)}
+  .search svg{position:absolute; left:10px; top:50%; transform:translateY(-50%); width:14px; height:14px; color:var(--muted)}
+  .add-btn{flex:0 0 auto; background:var(--brass); color:#221a0c; border-radius:var(--r-sm); width:38px; height:38px; display:grid; place-items:center; font-size:20px; font-weight:600; transition:transform .12s, background .15s}
+  .add-btn:hover{background:var(--brass-hi); transform:translateY(-1px)}
+
+  .filters{display:flex; gap:6px; padding:2px 16px 12px; flex-wrap:wrap}
+  .filters button{font-size:11.5px; letter-spacing:.02em; padding:5px 10px; border-radius:99px; color:var(--ink-soft); border:1px solid var(--line); transition:.15s}
+  .filters button:hover{color:var(--ink); border-color:var(--brass)}
+  .filters button.on{background:var(--brass-soft); border-color:var(--brass); color:var(--brass-hi)}
+
+  .plist{flex:1; overflow-y:auto; padding:4px 12px 12px; min-height:0}
+  .pcard{position:relative; padding:13px 14px 13px 16px; border-radius:var(--r-sm); border:1px solid transparent; margin-bottom:7px; transition:.14s; overflow:hidden}
+  .pcard:hover{background:var(--bg-3)}
+  .pcard.sel{background:var(--bg-3); border-color:var(--line)}
+  .pcard.sel::before{content:""; position:absolute; left:0; top:9px; bottom:9px; width:3px; border-radius:0 3px 3px 0; background:var(--brass)}
+  .pcard .row1{display:flex; align-items:center; gap:8px}
+  .dot{width:8px; height:8px; border-radius:50%; flex:0 0 auto}
+  .pcard .ptitle{font-weight:600; font-size:14.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .pcard .meta{display:flex; align-items:center; gap:9px; margin-top:7px; font-size:11px; color:var(--muted)}
+  .minibar{flex:1; height:4px; border-radius:99px; background:var(--bg-4); overflow:hidden}
+  .minibar i{display:block; height:100%; background:var(--brass); border-radius:99px; transition:width .35s ease}
+  .pcard .count{font-family:"JetBrains Mono",monospace; font-size:10.5px}
+
+  .side-foot{border-top:1px solid var(--line-soft); padding:12px 16px; display:flex; flex-direction:column; gap:9px}
+  .syncpill{display:flex; align-items:center; gap:8px; font-size:12px; padding:8px 11px; border-radius:99px; border:1px solid var(--line); color:var(--ink-soft); width:100%; transition:.15s}
+  .syncpill:hover{border-color:var(--brass)}
+  .syncpill .sdot{width:8px;height:8px;border-radius:50%;background:var(--muted); flex:0 0 auto}
+  .syncpill.ok .sdot{background:var(--ok)} .syncpill.busy .sdot{background:var(--brass); animation:pulse 1s infinite}
+  .syncpill.off .sdot{background:var(--hold)} .syncpill.err .sdot{background:var(--danger)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .syncpill .stxt{flex:1; text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .syncpill svg{width:13px;height:13px;color:var(--muted)}
+  .foot-row{display:flex; gap:8px}
+  .ghost{flex:1; font-size:12px; letter-spacing:.03em; padding:8px; border:1px solid var(--line); border-radius:var(--r-sm); color:var(--ink-soft); display:flex; align-items:center; justify-content:center; gap:6px; transition:.15s}
+  .ghost:hover{border-color:var(--brass); color:var(--ink)}
+  .ghost svg{width:13px;height:13px}
+
+  /* Main */
+  .main{overflow-y:auto; min-height:0}
+  .empty{height:100%; display:grid; place-content:center; text-align:center; padding:40px; gap:14px}
+  .empty .glyph{font-family:"Fraunces",serif; font-size:56px; color:var(--brass); opacity:.5}
+  .empty h2{font-family:"Fraunces",serif; font-weight:500; font-size:24px; margin:0}
+  .empty p{color:var(--muted); max-width:340px; margin:0 auto; font-size:14px}
+  .empty button{margin-top:6px; background:var(--brass); color:#221a0c; font-weight:600; padding:11px 20px; border-radius:var(--r-sm); transition:.15s}
+  .empty button:hover{background:var(--brass-hi)}
+
+  .doc{max-width:780px; margin:0 auto; padding:38px 46px 90px; animation:rise .4s ease both}
+  @keyframes rise{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+  .head{display:flex; align-items:flex-start; gap:14px}
+  .titlewrap{flex:1; min-width:0}
+  .titlewrap input{width:100%; background:none; border:none; outline:none; font-family:"Fraunces",serif; font-weight:600; font-size:32px; letter-spacing:-.015em; padding:2px 0; border-bottom:1px solid transparent; transition:border-color .15s}
+  .titlewrap input:focus{border-bottom-color:var(--line)}
+  .created{font-size:11.5px; color:var(--muted); margin-top:6px; letter-spacing:.04em}
+  .del-proj{flex:0 0 auto; color:var(--muted); width:34px; height:34px; border-radius:8px; display:grid; place-items:center; transition:.15s}
+  .del-proj:hover{color:var(--danger); background:rgba(199,90,74,.1)}
+  .del-proj svg{width:17px;height:17px}
+
+  .statusrow{display:flex; gap:7px; margin:20px 0 26px; flex-wrap:wrap}
+  .sbtn{font-size:12px; letter-spacing:.03em; padding:7px 13px; border-radius:99px; border:1px solid var(--line); color:var(--ink-soft); display:flex; align-items:center; gap:7px; transition:.15s}
+  .sbtn .dot{width:7px;height:7px}
+  .sbtn:hover{border-color:var(--ink-soft)}
+  .sbtn.on{color:var(--ink); font-weight:600}
+
+  section.block{margin-top:30px}
+  .blabel{display:flex; align-items:center; gap:10px; margin-bottom:13px}
+  .blabel h3{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--brass); margin:0; font-weight:600}
+  .blabel .ln{flex:1; height:1px; background:var(--line)}
+  .blabel .pct{font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--muted)}
+
+  textarea.notes{width:100%; min-height:96px; resize:vertical; background:var(--bg-2); border:1px solid var(--line); border-radius:var(--r); padding:14px 15px; font-size:14.5px; line-height:1.6; outline:none; transition:border-color .15s; color:var(--ink-soft)}
+  textarea.notes:focus{border-color:var(--brass); color:var(--ink)}
+  textarea.notes::placeholder{color:#b3a894}
+
+  .progress{height:6px; border-radius:99px; background:var(--bg-3); overflow:hidden; margin-bottom:14px}
+  .progress i{display:block; height:100%; background:linear-gradient(90deg,var(--brass),var(--brass-hi)); border-radius:99px; transition:width .4s ease}
+
+  .task{display:flex; align-items:flex-start; gap:12px; padding:10px 8px; border-radius:9px; transition:background .12s}
+  .task:hover{background:var(--bg-2)}
+  .check{flex:0 0 auto; margin-top:1px; width:20px; height:20px; border-radius:6px; border:1.5px solid var(--line); display:grid; place-items:center; transition:.15s; background:var(--bg-2)}
+  .check:hover{border-color:var(--brass)}
+  .check.done{background:var(--brass); border-color:var(--brass)}
+  .check svg{width:13px; height:13px; color:#221a0c; opacity:0; transform:scale(.5); transition:.18s}
+  .check.done svg{opacity:1; transform:scale(1)}
+  .task .txt{flex:1; font-size:14.5px; line-height:1.5; padding-top:1px; word-break:break-word}
+  .task.done .txt{color:var(--muted); text-decoration:line-through; text-decoration-color:rgba(138,128,112,.6)}
+  .task .x{flex:0 0 auto; opacity:0; color:var(--muted); font-size:18px; line-height:1; padding:2px 6px; border-radius:6px; transition:.12s}
+  .task:hover .x{opacity:1}
+  .task .x:hover{color:var(--danger); background:rgba(199,90,74,.1)}
+
+  .addrow{display:flex; gap:10px; margin-top:8px; padding:0 8px}
+  .addrow input{flex:1; background:var(--bg-2); border:1px solid var(--line); border-radius:9px; padding:11px 13px; font-size:14px; outline:none; transition:border-color .15s}
+  .addrow input:focus{border-color:var(--brass)}
+  .addrow input::placeholder{color:#b3a894}
+
+  .link{display:flex; align-items:center; gap:12px; padding:11px 13px; background:var(--bg-2); border:1px solid var(--line); border-radius:var(--r-sm); margin-bottom:8px; transition:.14s}
+  .link:hover{border-color:var(--line-soft); background:var(--bg-3)}
+  .link .ico{flex:0 0 auto; width:30px; height:30px; border-radius:8px; display:grid; place-items:center; font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:600; color:#fff}
+  .link a{flex:1; color:var(--ink); text-decoration:none; font-size:14px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .link a:hover{color:var(--brass-hi)}
+  .link .kind{font-size:11px; color:var(--muted); flex:0 0 auto}
+  .link .x{flex:0 0 auto; opacity:.4; color:var(--muted); font-size:17px; padding:2px 6px; border-radius:6px; transition:.12s}
+  .link .x:hover{opacity:1; color:var(--danger); background:rgba(199,90,74,.1)}
+  .linkadd{display:flex; gap:8px; margin-top:6px}
+  .linkadd input{background:var(--bg-2); border:1px solid var(--line); border-radius:9px; padding:10px 12px; font-size:13.5px; outline:none; transition:border-color .15s}
+  .linkadd input:focus{border-color:var(--brass)}
+  .linkadd .lbl{width:140px}
+  .linkadd .url{flex:1}
+  .linkadd button{flex:0 0 auto; background:var(--bg-4); border:1px solid var(--line); border-radius:9px; padding:0 16px; font-size:13px; font-weight:600; color:var(--ink-soft); transition:.15s}
+  .linkadd button:hover{border-color:var(--brass); color:var(--ink)}
+  .empty-note{color:var(--muted); font-size:13.5px; font-style:italic; padding:4px 2px 2px}
+
+  .toast{position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--bg-4); border:1px solid var(--line); color:var(--ink); padding:11px 18px; border-radius:99px; font-size:13px; box-shadow:var(--shadow); opacity:0; pointer-events:none; transition:.3s; z-index:80}
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+
+  /* Modal */
+  .scrim{position:fixed; inset:0; background:rgba(48,38,24,.42); backdrop-filter:blur(3px); z-index:60; display:none; align-items:center; justify-content:center; padding:24px}
+  .scrim.show{display:flex}
+  .modal{width:100%; max-width:520px; background:var(--bg-2); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); max-height:90vh; overflow-y:auto}
+  .modal .mhead{padding:24px 26px 4px}
+  .modal .kicker{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--brass)}
+  .modal h2{font-family:"Fraunces",serif; font-weight:600; font-size:24px; margin:6px 0 0}
+  .modal .sub{color:var(--ink-soft); font-size:13.5px; padding:8px 26px 0; line-height:1.55}
+  .steps{padding:16px 26px 4px; display:flex; flex-direction:column; gap:12px}
+  .step{display:flex; gap:12px; font-size:13px; color:var(--ink-soft); line-height:1.5}
+  .step .num{flex:0 0 auto; width:22px; height:22px; border-radius:50%; background:var(--brass-soft); color:var(--brass-hi); font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:600; display:grid; place-items:center; margin-top:1px}
+  .step a{color:var(--brass-hi); text-decoration:none; border-bottom:1px solid rgba(220,176,102,.35)}
+  .step code{font-family:"JetBrains Mono",monospace; font-size:12px; background:var(--bg-4); padding:1px 6px; border-radius:5px; color:var(--ink)}
+  .fields{padding:8px 26px 4px; display:flex; flex-direction:column; gap:11px}
+  .field label{display:block; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:5px; font-family:"JetBrains Mono",monospace}
+  .field input{width:100%; background:var(--bg-3); border:1px solid var(--line); border-radius:9px; padding:11px 13px; font-size:14px; outline:none; transition:border-color .15s}
+  .field input:focus{border-color:var(--brass)}
+  .field .hint{font-size:11.5px; color:var(--muted); margin-top:5px}
+  .merr{margin:6px 26px 0; padding:10px 13px; background:rgba(192,67,47,.1); border:1px solid rgba(192,67,47,.35); border-radius:9px; color:#9c3322; font-size:12.5px; display:none}
+  .merr.show{display:block}
+  .mfoot{padding:18px 26px 24px; display:flex; gap:10px; align-items:center}
+  .btn-primary{background:var(--brass); color:#221a0c; font-weight:600; padding:12px 22px; border-radius:10px; font-size:14px; transition:.15s; display:flex; align-items:center; gap:8px}
+  .btn-primary:hover{background:var(--brass-hi)}
+  .btn-primary:disabled{opacity:.5; cursor:default}
+  .btn-text{color:var(--ink-soft); font-size:13px; padding:10px}
+  .btn-text:hover{color:var(--ink)}
+  .spin{width:14px;height:14px;border:2px solid rgba(34,26,12,.35);border-top-color:#221a0c;border-radius:50%;animation:sp .6s linear infinite}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .connected-info{padding:4px 26px 0; font-size:13px; color:var(--ink-soft); line-height:1.6}
+  .connected-info b{color:var(--ink)}
+  .connected-info .repo{font-family:"JetBrains Mono",monospace; color:var(--brass-hi); font-size:12.5px}
+
+  .mobtop{display:none; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--line); position:sticky; top:0; background:var(--bg); z-index:10}
+  .mobtop button{width:36px;height:36px;border:1px solid var(--line);border-radius:9px;display:grid;place-items:center}
+  .backdrop{display:none}
+  @media (max-width:780px){
+    .shell{grid-template-columns:1fr}
+    .side{position:fixed; top:0; bottom:0; left:0; z-index:30; transform:translateX(-105%); transition:transform .25s; box-shadow:var(--shadow); width:300px}
+    .side.open{transform:none}
+    .doc{padding:24px 20px 80px}
+    .titlewrap input{font-size:26px}
+    .mobtop{display:flex}
+    .backdrop.show{display:block; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:20}
+    .linkadd{flex-wrap:wrap}.linkadd .lbl{width:100%}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side" id="side">
+    <div class="brand"><div class="kicker">Baker Estates</div><h1>Project <em>Desk</em></h1></div>
+    <div class="side-tools">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
+        <input id="search" placeholder="Search projects…">
+      </div>
+      <button class="add-btn" id="newBtn" title="New project">+</button>
+    </div>
+    <div class="filters" id="filters">
+      <button data-f="all" class="on">All</button>
+      <button data-f="Idea">Ideas</button>
+      <button data-f="Active">Active</button>
+      <button data-f="On Hold">On Hold</button>
+      <button data-f="Done">Done</button>
+    </div>
+    <div class="plist" id="plist"></div>
+    <div class="side-foot">
+      <button class="syncpill" id="syncPill"><span class="sdot"></span><span class="stxt" id="syncTxt">Not connected</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 6.6 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7H1a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 2.6 6.6a1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H7a1.6 1.6 0 0 0 1-1.5V1a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V7a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
+      </button>
+      <div class="foot-row">
+        <button class="ghost" id="exportBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 21h14"/></svg>Export</button>
+        <button class="ghost" id="importBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21V9m0 0 4 4m-4-4-4 4"/><path d="M5 3h14"/></svg>Import</button>
+        <input type="file" id="fileInput" accept="application/json" hidden>
+      </div>
+    </div>
+  </aside>
+  <div class="backdrop" id="backdrop"></div>
+  <main class="main">
+    <div class="mobtop">
+      <button id="menuBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      <strong style="font-family:Fraunces,serif;font-size:18px">Project Desk</strong>
+    </div>
+    <div id="detail"></div>
+  </main>
+</div>
+
+<!-- Setup / Settings modal -->
+<div class="scrim" id="scrim">
+  <div class="modal" id="modal"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+  var CFG_KEY="bakerEstates.projectDesk.cfg";
+  var CACHE_KEY="bakerEstates.projectDesk.cache";
+  var STATUSES=["Idea","Active","On Hold","Done"];
+  var SCOLOR={"Idea":"var(--idea)","Active":"var(--active)","On Hold":"var(--hold)","Done":"var(--done)"};
+
+  // ---- config (where the data lives) ----
+  var cfg=loadJSON(CFG_KEY) || {owner:"",repo:"",path:"data.json",token:"",branch:"main"};
+  // ---- working state + local cache (instant load + offline safety) ----
+  var memCache=null;
+  var state=loadJSON(CACHE_KEY) || {projects:[],selectedId:null,filter:"all"};
+  state.filter=state.filter||"all"; state.query="";
+  var remoteSha=null;
+  var saveTimer=null, pulling=false, syncStatus="idle";
+
+  function loadJSON(k){ try{var r=localStorage.getItem(k); return r?JSON.parse(r):null;}catch(e){return (k===CACHE_KEY?memCache:null);} }
+  function cacheLocal(){ try{localStorage.setItem(CACHE_KEY, JSON.stringify(state));}catch(e){memCache=state;} }
+  function saveCfg(){ try{localStorage.setItem(CFG_KEY, JSON.stringify(cfg));}catch(e){} }
+
+  function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+  function find(id){ for(var i=0;i<state.projects.length;i++) if(state.projects[i].id===id) return state.projects[i]; return null; }
+  function selected(){ return find(state.selectedId); }
+  function connected(){ return !!(cfg.owner && cfg.repo && cfg.token); }
+
+  function fmtDate(ts){ try{return new Date(ts).toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"});}catch(e){return "";} }
+  function esc(s){ return (s==null?"":String(s)).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];}); }
+  function escAttr(s){ return (s==null?"":String(s)).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+  function b64enc(str){ return btoa(unescape(encodeURIComponent(str))); }
+  function b64dec(b64){ return decodeURIComponent(escape(atob(String(b64).replace(/\s/g,"")))); }
+
+  function linkKind(url){
+    var u=(url||"").toLowerCase();
+    if(u.indexOf("docs.google.com/document")>-1) return {k:"Doc",c:"#4285f4",t:"D"};
+    if(u.indexOf("docs.google.com/spreadsheets")>-1) return {k:"Sheet",c:"#0f9d58",t:"S"};
+    if(u.indexOf("docs.google.com/presentation")>-1) return {k:"Slides",c:"#f4b400",t:"P"};
+    if(u.indexOf("drive.google.com/drive/folders")>-1) return {k:"Folder",c:"#5f6368",t:"\u25A0"};
+    if(u.indexOf("drive.google.com")>-1) return {k:"Drive",c:"#1fa463",t:"\u25B3"};
+    if(u.indexOf("notion.")>-1) return {k:"Notion",c:"#222",t:"N"};
+    return {k:"Link",c:"#c79a52",t:"\u2197"};
+  }
+
+  // =================== GitHub sync layer ===================
+  function gh(pathSuffix, opts){
+    opts=opts||{};
+    return fetch("https://api.github.com/repos/"+cfg.owner+"/"+cfg.repo+pathSuffix, {
+      method: opts.method||"GET",
+      headers: {
+        "Authorization":"Bearer "+cfg.token,
+        "Accept":"application/vnd.github+json",
+        "X-GitHub-Api-Version":"2022-11-28"
+      },
+      body: opts.body?JSON.stringify(opts.body):undefined
+    });
+  }
+
+  function setSync(s, txt){
+    syncStatus=s;
+    var pill=document.getElementById("syncPill"), t=document.getElementById("syncTxt");
+    pill.className="syncpill "+({idle:"ok",ok:"ok",busy:"busy",off:"off",err:"err"}[s]||"");
+    var def={idle:"Synced",ok:"Synced \u2713",busy:"Syncing\u2026",off:"Offline \u00b7 will retry",err:"Connection issue"};
+    t.textContent = !connected() ? "Tap to connect sync" : (txt||def[s]||"Synced");
+  }
+
+  // pull latest from GitHub (source of truth on load / manual refresh)
+  function pull(showToast){
+    if(!connected()) return Promise.resolve();
+    pulling=true; setSync("busy","Loading\u2026");
+    return gh("/contents/"+encodeURIComponent(cfg.path)+"?ref="+encodeURIComponent(cfg.branch)+"&_="+Date.now())
+      .then(function(res){
+        if(res.status===404){ remoteSha=null; return push(true).then(function(){ if(showToast) toast("Sync file created"); }); }
+        if(res.status===401||res.status===403) throw {auth:true};
+        if(!res.ok) throw {http:res.status};
+        return res.json().then(function(j){
+          remoteSha=j.sha;
+          var data=JSON.parse(b64dec(j.content));
+          if(data && Array.isArray(data.projects)){
+            var sel=state.selectedId, fil=state.filter;
+            state=data; state.query=""; state.filter=state.filter||fil||"all";
+            if(find(sel)) state.selectedId=sel;
+            cacheLocal();
+          }
+          setSync("idle"); if(showToast) toast("Pulled latest \u2713");
+        });
+      })
+      .catch(function(e){ handleErr(e); })
+      .then(function(){ pulling=false; render(); });
+  }
+
+  // push current state to GitHub (debounced via scheduleSave)
+  function push(silent){
+    if(!connected()) return Promise.resolve();
+    setSync("busy","Saving\u2026");
+    var body={ message:"Update project desk \u2014 "+new Date().toISOString(),
+               content:b64enc(JSON.stringify(state,null,2)), branch:cfg.branch };
+    if(remoteSha) body.sha=remoteSha;
+    return gh("/contents/"+encodeURIComponent(cfg.path), {method:"PUT", body:body})
+      .then(function(res){
+        if(res.status===409){ // someone else wrote first — refetch sha, last write wins
+          return gh("/contents/"+encodeURIComponent(cfg.path)+"?ref="+encodeURIComponent(cfg.branch)+"&_="+Date.now())
+            .then(function(r){return r.json();}).then(function(j){ remoteSha=j.sha; return push(silent); });
+        }
+        if(res.status===401||res.status===403) throw {auth:true};
+        if(!res.ok) throw {http:res.status};
+        return res.json().then(function(j){ remoteSha=j.content.sha; setSync("ok"); });
+      })
+      .catch(function(e){ handleErr(e); });
+  }
+
+  function handleErr(e){
+    if(e && e.auth){ setSync("err","Token rejected \u2014 tap to fix"); toast("GitHub rejected the token. Tap the sync pill to re-enter it."); }
+    else { setSync("off"); }
+  }
+
+  function scheduleSave(){
+    cacheLocal();
+    if(!connected()){ setSync("off","Local only \u00b7 not synced"); return; }
+    setSync("busy","Saving\u2026");
+    clearTimeout(saveTimer);
+    saveTimer=setTimeout(function(){ push(true); }, 700);
+  }
+
+  // re-push if we come back online
+  window.addEventListener("online", function(){ if(connected() && syncStatus==="off") push(true); });
+
+  // =================== actions ===================
+  function commit(){ scheduleSave(); render(); }   // mutate state then call commit()
+
+  function newProject(){
+    var p={id:uid(),title:"",status:"Idea",notes:"",createdAt:Date.now(),tasks:[],links:[]};
+    state.projects.unshift(p); state.selectedId=p.id; commit();
+    setTimeout(function(){var el=document.getElementById("titleInput"); if(el) el.focus();},30); closeSide();
+  }
+  function deleteProject(id){
+    if(!confirm("Delete this project for good? (It stays recoverable in your GitHub history.)")) return;
+    state.projects=state.projects.filter(function(p){return p.id!==id;});
+    if(state.selectedId===id) state.selectedId=state.projects.length?state.projects[0].id:null;
+    commit();
+  }
+
+  // =================== render ===================
+  function visibleProjects(){
+    var q=(state.query||"").trim().toLowerCase();
+    return state.projects.filter(function(p){
+      if(state.filter!=="all" && p.status!==state.filter) return false;
+      if(q){ var hay=(p.title+" "+p.notes+" "+p.tasks.map(function(t){return t.text;}).join(" ")).toLowerCase(); if(hay.indexOf(q)===-1) return false; }
+      return true;
+    });
+  }
+  function renderList(){
+    var wrap=document.getElementById("plist"); var list=visibleProjects(); wrap.innerHTML="";
+    if(!state.projects.length){ wrap.innerHTML='<div class="empty-note" style="padding:18px 6px">No projects yet. Hit <b style="color:var(--brass)">+</b> to capture your first idea.</div>'; return; }
+    if(!list.length){ wrap.innerHTML='<div class="empty-note" style="padding:18px 6px">Nothing matches that filter.</div>'; return; }
+    list.forEach(function(p){
+      var done=p.tasks.filter(function(t){return t.done;}).length, tot=p.tasks.length, pct=tot?Math.round(done/tot*100):0;
+      var card=document.createElement("div");
+      card.className="pcard"+(p.id===state.selectedId?" sel":"");
+      card.innerHTML='<div class="row1"><span class="dot" style="background:'+SCOLOR[p.status]+'"></span>'+
+        '<span class="ptitle">'+(esc(p.title)||'<span style="color:var(--muted)">Untitled idea</span>')+'</span></div>'+
+        '<div class="meta">'+(tot?'<span class="minibar"><i style="width:'+pct+'%"></i></span><span class="count">'+done+'/'+tot+'</span>':'<span class="count" style="color:var(--muted)">'+p.status+'</span>')+'</div>';
+      card.onclick=function(){ state.selectedId=p.id; cacheLocal(); render(); closeSide(); };
+      wrap.appendChild(card);
+    });
+  }
+  function renderDetail(){
+    var d=document.getElementById("detail"); var p=selected();
+    if(!p){
+      d.innerHTML='<div class="empty"><div class="glyph">&#9671;</div><h2>Your private workshop</h2>'+
+        '<p>Park every project idea here \u2014 notes, a running checklist, and links to the Google files that go with it. It syncs to every device you open it on.</p>'+
+        '<button id="emptyNew">Capture an idea</button></div>';
+      var b=document.getElementById("emptyNew"); if(b) b.onclick=newProject; return;
+    }
+    var done=p.tasks.filter(function(t){return t.done;}).length, tot=p.tasks.length, pct=tot?Math.round(done/tot*100):0;
+    var h='<div class="doc"><div class="head"><div class="titlewrap">'+
+      '<input id="titleInput" placeholder="Name this project\u2026" value="'+escAttr(p.title)+'">'+
+      '<div class="created">Started '+fmtDate(p.createdAt)+'</div></div>'+
+      '<button class="del-proj" id="delProj" title="Delete project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2m-9 0 1 14h8l1-14"/></svg></button></div>';
+    h+='<div class="statusrow">';
+    STATUSES.forEach(function(s){ h+='<button class="sbtn'+(p.status===s?' on':'')+'" data-s="'+s+'" '+(p.status===s?'style="border-color:'+SCOLOR[s]+'"':'')+'><span class="dot" style="background:'+SCOLOR[s]+'"></span>'+s+'</button>'; });
+    h+='</div>';
+    h+='<section class="block"><div class="blabel"><h3>Idea &amp; Notes</h3><span class="ln"></span></div>'+
+      '<textarea class="notes" id="notes" placeholder="What is this? Why does it matter? Brain-dump it here\u2026">'+esc(p.notes)+'</textarea></section>';
+    h+='<section class="block"><div class="blabel"><h3>Checklist</h3><span class="ln"></span><span class="pct">'+(tot?pct+'% \u00b7 '+done+'/'+tot:'\u2014')+'</span></div>';
+    if(tot) h+='<div class="progress"><i style="width:'+pct+'%"></i></div>';
+    h+='<div id="tasks">';
+    p.tasks.forEach(function(t){ h+='<div class="task'+(t.done?' done':'')+'" data-id="'+t.id+'"><button class="check'+(t.done?' done':'')+'" data-act="toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 6"/></svg></button><div class="txt">'+esc(t.text)+'</div><button class="x" data-act="deltask">&times;</button></div>'; });
+    h+='</div><div class="addrow"><input id="taskInput" placeholder="Add a step, then press Enter\u2026"></div></section>';
+    h+='<section class="block"><div class="blabel"><h3>Linked Files &amp; Folders</h3><span class="ln"></span></div><div id="links">';
+    if(!p.links.length) h+='<div class="empty-note">Paste a Google Drive, Doc, Sheet, or any link below to keep it within reach.</div>';
+    p.links.forEach(function(l){ var k=linkKind(l.url); h+='<div class="link" data-id="'+l.id+'"><span class="ico" style="background:'+k.c+'">'+k.t+'</span><a href="'+escAttr(l.url)+'" target="_blank" rel="noopener">'+(esc(l.label)||esc(l.url))+'</a><span class="kind">'+k.k+'</span><button class="x" data-act="dellink">&times;</button></div>'; });
+    h+='</div><div class="linkadd"><input class="lbl" id="linkLabel" placeholder="Label (optional)"><input class="url" id="linkUrl" placeholder="Paste link\u2026"><button id="addLink">Add</button></div></section>';
+    h+='</div>';
+    d.innerHTML=h; wireDetail(p);
+  }
+  function wireDetail(p){
+    var title=document.getElementById("titleInput");
+    title.addEventListener("input",function(){ p.title=title.value; scheduleSave(); renderList(); });
+    document.getElementById("delProj").onclick=function(){ deleteProject(p.id); };
+    document.querySelectorAll(".sbtn").forEach(function(b){ b.onclick=function(){ p.status=b.getAttribute("data-s"); commit(); }; });
+    var notes=document.getElementById("notes");
+    notes.addEventListener("input",function(){ p.notes=notes.value; scheduleSave(); });
+    var ti=document.getElementById("taskInput");
+    ti.addEventListener("keydown",function(e){ if(e.key==="Enter"&&ti.value.trim()){ p.tasks.push({id:uid(),text:ti.value.trim(),done:false}); commit(); setTimeout(function(){var n=document.getElementById("taskInput"); if(n) n.focus();},20); } });
+    document.getElementById("tasks").addEventListener("click",function(e){
+      var act=e.target.closest("[data-act]"); if(!act) return;
+      var id=e.target.closest(".task").getAttribute("data-id"); var t=null;
+      for(var i=0;i<p.tasks.length;i++) if(p.tasks[i].id===id) t=p.tasks[i];
+      if(act.getAttribute("data-act")==="toggle"){ t.done=!t.done; commit(); }
+      else { p.tasks=p.tasks.filter(function(x){return x.id!==id;}); commit(); }
+    });
+    function addLink(){ var url=document.getElementById("linkUrl").value.trim(); if(!url) return;
+      if(!/^https?:\/\//i.test(url)) url="https://"+url;
+      p.links.push({id:uid(),url:url,label:document.getElementById("linkLabel").value.trim()}); commit(); }
+    document.getElementById("addLink").onclick=addLink;
+    document.getElementById("linkUrl").addEventListener("keydown",function(e){ if(e.key==="Enter") addLink(); });
+    document.getElementById("links").addEventListener("click",function(e){
+      var act=e.target.closest("[data-act]"); if(!act) return;
+      var id=e.target.closest(".link").getAttribute("data-id");
+      p.links=p.links.filter(function(x){return x.id!==id;}); commit();
+    });
+  }
+  function render(){
+    document.querySelectorAll("#filters button").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-f")===state.filter); });
+    renderList(); renderDetail();
+  }
+
+  // =================== modal: setup & settings ===================
+  function openModal(){ document.getElementById("scrim").classList.add("show"); renderModal(); }
+  function closeModal(){ document.getElementById("scrim").classList.remove("show"); }
+  function renderModal(){
+    var m=document.getElementById("modal");
+    if(connected()){
+      m.innerHTML='<div class="mhead"><div class="kicker">Sync settings</div><h2>You\u2019re connected</h2></div>'+
+        '<div class="connected-info"><p>This desk is syncing to <span class="repo">'+esc(cfg.owner)+'/'+esc(cfg.repo)+'</span> on branch <b>'+esc(cfg.branch)+'</b>.</p>'+
+        '<p style="color:var(--muted)">Open this same web address on any device and sign-in is already done \u2014 it loads the same data. Every save is a commit, so your full history lives in that repo.</p></div>'+
+        '<div class="mfoot"><button class="btn-primary" id="pullNow">Pull latest now</button>'+
+        '<button class="btn-text" id="reconnect">Re-enter token</button>'+
+        '<button class="btn-text" id="disconnect" style="color:var(--danger);margin-left:auto">Disconnect</button></div>';
+      document.getElementById("pullNow").onclick=function(){ closeModal(); pull(true); };
+      document.getElementById("reconnect").onclick=function(){ cfg.token=""; renderSetup(); };
+      document.getElementById("disconnect").onclick=function(){
+        if(!confirm("Disconnect sync on this device? Your data stays safe in GitHub; this just clears the token here.")) return;
+        cfg={owner:"",repo:"",path:"data.json",token:"",branch:"main"}; saveCfg(); closeModal(); setSync("off","Tap to connect sync"); toast("Disconnected on this device");
+      };
+    } else renderSetup();
+  }
+  function renderSetup(){
+    var m=document.getElementById("modal");
+    m.innerHTML='<div class="mhead"><div class="kicker">One-time setup \u00b7 per device</div><h2>Turn on sync</h2></div>'+
+      '<div class="sub">Your projects will live in one private file inside your own GitHub. No new app, no subscription \u2014 just a free repo you control.</div>'+
+      '<div class="steps">'+
+        '<div class="step"><span class="num">1</span><div>Create a <b>private</b> repo at <a href="https://github.com/new" target="_blank" rel="noopener">github.com/new</a>. Name it something like <code>project-desk-data</code> and check <b>\u201cAdd a README\u201d</b>.</div></div>'+
+        '<div class="step"><span class="num">2</span><div>Make a token at <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Fine-grained tokens</a>. Under <b>Repository access</b> pick that one repo; under <b>Permissions \u2192 Contents</b> choose <b>Read and write</b>. Copy the token (starts with <code>github_pat_</code>).</div></div>'+
+        '<div class="step"><span class="num">3</span><div>Paste the three details below. You only do this once per device.</div></div>'+
+      '</div>'+
+      '<div class="fields">'+
+        '<div class="field"><label>GitHub username</label><input id="f_owner" value="'+escAttr(cfg.owner)+'" placeholder="e.g. dylonbaker" autocomplete="off"></div>'+
+        '<div class="field"><label>Repository name</label><input id="f_repo" value="'+escAttr(cfg.repo)+'" placeholder="project-desk-data" autocomplete="off"></div>'+
+        '<div class="field"><label>Access token</label><input id="f_token" type="password" placeholder="github_pat_\u2026" autocomplete="off"><div class="hint">Stored only in this browser, never sent anywhere except GitHub.</div></div>'+
+      '</div>'+
+      '<div class="merr" id="merr"></div>'+
+      '<div class="mfoot"><button class="btn-primary" id="connectBtn">Connect &amp; sync</button>'+
+        (state.projects.length?'<span class="btn-text" style="color:var(--muted)">Your '+state.projects.length+' local project(s) will upload</span>':'')+'</div>';
+    document.getElementById("connectBtn").onclick=doConnect;
+    document.getElementById("f_token").addEventListener("keydown",function(e){ if(e.key==="Enter") doConnect(); });
+  }
+  function merr(msg){ var e=document.getElementById("merr"); if(!e) return; e.textContent=msg; e.classList.toggle("show",!!msg); }
+  function doConnect(){
+    var owner=document.getElementById("f_owner").value.trim();
+    var repo=document.getElementById("f_repo").value.trim().replace(/\s+/g,"-");
+    var token=document.getElementById("f_token").value.trim();
+    if(!owner||!repo||!token){ merr("Fill in all three fields to connect."); return; }
+    merr(""); var btn=document.getElementById("connectBtn"); btn.disabled=true; btn.innerHTML='<span class="spin"></span>Connecting\u2026';
+    var test={owner:owner,repo:repo,token:token};
+    // verify repo + read default branch
+    fetch("https://api.github.com/repos/"+owner+"/"+repo,{headers:{"Authorization":"Bearer "+token,"Accept":"application/vnd.github+json"}})
+      .then(function(res){
+        if(res.status===401) throw "Token was rejected. Re-copy it from GitHub (it shows only once).";
+        if(res.status===404) throw "Can\u2019t find that repo, or the token can\u2019t see it. Check the username/repo spelling and that the token was granted access to this repo.";
+        if(!res.ok) throw "GitHub returned an error ("+res.status+"). Try again in a moment.";
+        return res.json();
+      })
+      .then(function(j){
+        cfg.owner=owner; cfg.repo=repo; cfg.token=token; cfg.branch=j.default_branch||"main"; cfg.path="data.json";
+        saveCfg(); closeModal(); toast("Connected to "+owner+"/"+repo+" \u2713");
+        return pull(false).then(function(){ if(state.projects.length) return push(true); });
+      })
+      .catch(function(e){ btn.disabled=false; btn.innerHTML="Connect &amp; sync"; merr(typeof e==="string"?e:"Couldn\u2019t connect \u2014 check your details and try again."); });
+  }
+
+  // =================== export / import (manual backup, still handy) ===================
+  function exportData(){
+    var blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+    var a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+    a.download="project-desk-backup-"+new Date().toISOString().slice(0,10)+".json"; a.click(); URL.revokeObjectURL(a.href);
+    toast("Backup downloaded");
+  }
+  function importData(file){
+    var r=new FileReader();
+    r.onload=function(){ try{ var data=JSON.parse(r.result); if(!data||!Array.isArray(data.projects)) throw 0;
+      if(!confirm("Import this file? It replaces what\u2019s on screen"+(connected()?" and pushes to GitHub.":"."))) return;
+      state=data; state.query=""; commit(); toast("Imported \u2713");
+    }catch(e){ toast("Couldn\u2019t read that file"); } };
+    r.readAsText(file);
+  }
+
+  // =================== misc ui ===================
+  function toast(msg){ var t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._t); t._t=setTimeout(function(){t.classList.remove("show");},2400); }
+  function openSide(){ document.getElementById("side").classList.add("open"); document.getElementById("backdrop").classList.add("show"); }
+  function closeSide(){ document.getElementById("side").classList.remove("open"); document.getElementById("backdrop").classList.remove("show"); }
+
+  // wiring
+  document.getElementById("newBtn").onclick=newProject;
+  document.getElementById("exportBtn").onclick=exportData;
+  document.getElementById("importBtn").onclick=function(){ document.getElementById("fileInput").click(); };
+  document.getElementById("fileInput").onchange=function(e){ if(e.target.files[0]) importData(e.target.files[0]); e.target.value=""; };
+  document.getElementById("search").addEventListener("input",function(e){ state.query=e.target.value; renderList(); });
+  document.getElementById("filters").addEventListener("click",function(e){ var b=e.target.closest("button"); if(!b) return; state.filter=b.getAttribute("data-f"); cacheLocal(); render(); });
+  document.getElementById("menuBtn").onclick=openSide;
+  document.getElementById("backdrop").onclick=closeSide;
+  document.getElementById("syncPill").onclick=openModal;
+  document.getElementById("scrim").addEventListener("click",function(e){ if(e.target.id==="scrim") closeModal(); });
+
+  // boot
+  render();
+  if(connected()){ setSync("ok"); pull(false); }
+  else { setSync("off","Tap to connect sync"); setTimeout(openModal, 350); }
+})();
+</script>
+</body>
+</html>
