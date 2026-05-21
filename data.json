@@ -25,6 +25,11 @@
           "id": "mpf27cay1k3o",
           "text": "Explain what can be moved and what can’t be moved",
           "status": "Not Started"
+        },
+        {
+          "id": "mpf27qno36xg",
+          "text": "Explain little rules like “drive time” and colors",
+          "status": "Not Started"
         }
       ],
       "links": []
