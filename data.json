@@ -15,7 +15,13 @@
       "status": "Idea",
       "notes": "",
       "createdAt": 1779341747882,
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "mpf26kw993su",
+          "text": "Explain the overview of my perfect work calendar",
+          "status": "Not Started"
+        }
+      ],
       "links": []
     },
     {
@@ -207,7 +213,7 @@
       "members": []
     }
   ],
-  "selectedId": "mpf25bm3itus",
+  "selectedId": "mpf24vjec152",
   "filter": "all",
   "query": "",
   "team": [
