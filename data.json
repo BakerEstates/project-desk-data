@@ -1,6 +1,15 @@
 {
   "projects": [
     {
+      "id": "mpf2bfrv6l7s",
+      "title": "",
+      "status": "Idea",
+      "notes": "",
+      "createdAt": 1779342054043,
+      "tasks": [],
+      "links": []
+    },
+    {
       "id": "mpf25bm3itus",
       "title": "Missive ai rules and customizing ",
       "status": "On Hold",
@@ -235,7 +244,7 @@
       "members": []
     }
   ],
-  "selectedId": "mpf25bm3itus",
+  "selectedId": "mpf2bfrv6l7s",
   "filter": "all",
   "query": "",
   "team": [
