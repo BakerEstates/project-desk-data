@@ -1,6 +1,15 @@
 {
   "projects": [
     {
+      "id": "mpf6dzy08spx",
+      "title": "",
+      "status": "Idea",
+      "notes": "",
+      "createdAt": 1779348891960,
+      "tasks": [],
+      "links": []
+    },
+    {
       "id": "mpf6buph15lh",
       "title": "Project Desk",
       "status": "Active",
@@ -281,7 +290,7 @@
       "members": []
     }
   ],
-  "selectedId": "mpf6buph15lh",
+  "selectedId": "mpf6dzy08spx",
   "filter": "all",
   "query": "",
   "team": [
