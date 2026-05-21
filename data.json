@@ -13,7 +13,13 @@
           "done": false
         }
       ],
-      "links": []
+      "links": [
+        {
+          "id": "mpez1hvujlzi",
+          "url": "https://docs.google.com/spreadsheets/d/1kT9eR_pc39DT9RmdajOhVVKRa9OK7ELDwk8t6efKLhA/edit?usp=sharing",
+          "label": "SOP Spreadsheet"
+        }
+      ]
     },
     {
       "id": "mpeyw0y3osul",
