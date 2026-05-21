@@ -55,7 +55,8 @@
         {
           "id": "mpf6hwkj8d6e",
           "text": "Sometimes Charlotte has free time. i want her to fill her free time with project related stuff. Lets find a way for her to be able to come here, and see all the stuff she can be working on, anything assigned to her task wise so she can grab a simple task and start finishing projects",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": "mpf1ujctq9hs"
         }
       ],
       "links": [],
