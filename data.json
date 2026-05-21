@@ -158,7 +158,9 @@
           "label": "SOP Spreadsheet"
         }
       ],
-      "members": []
+      "members": [
+        "mpf1ujctq9hs"
+      ]
     },
     {
       "id": "mpeyw0y3osul",
@@ -190,7 +192,7 @@
       "members": []
     }
   ],
-  "selectedId": "mpezeu2ak074",
+  "selectedId": "mpeyzu401410",
   "filter": "all",
   "query": "",
   "team": [
