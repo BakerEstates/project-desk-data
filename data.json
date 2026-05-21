@@ -18,7 +18,13 @@
           "done": false
         }
       ],
-      "links": []
+      "links": [
+        {
+          "id": "mpeyzm3lh8kx",
+          "url": "https://docs.google.com/spreadsheets/d/1B4gf5AS7rPRoQp7nsiLaMwbGuKDnjJda1CDSghTBfBk/edit?usp=sharing",
+          "label": "Post Transaction Review Sheet"
+        }
+      ]
     }
   ],
   "selectedId": "mpeyw0y3osul",
