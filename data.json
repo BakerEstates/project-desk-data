@@ -1,6 +1,15 @@
 {
   "projects": [
     {
+      "id": "mpeyzu401410",
+      "title": "",
+      "status": "Idea",
+      "notes": "",
+      "createdAt": 1779336473904,
+      "tasks": [],
+      "links": []
+    },
+    {
       "id": "mpeyw0y3osul",
       "title": "AFrame - Revamp 2026",
       "status": "Active",
@@ -27,7 +36,7 @@
       ]
     }
   ],
-  "selectedId": "mpeyw0y3osul",
+  "selectedId": "mpeyzu401410",
   "filter": "all",
   "query": ""
 }
