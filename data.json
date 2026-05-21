@@ -1,6 +1,16 @@
 {
-  "projects": [],
-  "selectedId": null,
+  "projects": [
+    {
+      "id": "mpeyw0y3osul",
+      "title": "",
+      "status": "Idea",
+      "notes": "",
+      "createdAt": 1779336296139,
+      "tasks": [],
+      "links": []
+    }
+  ],
+  "selectedId": "mpeyw0y3osul",
   "filter": "all",
   "query": ""
 }
