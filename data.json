@@ -6,7 +6,13 @@
       "status": "Idea",
       "notes": "",
       "createdAt": 1779391553372,
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "mpfvtakgax4y",
+          "text": "Recreate the bio sheets to slides that we can add or remove as needed. This way if people cant pull the bio thing up on their phone, they can at least have it on the screen.",
+          "status": "Not Started"
+        }
+      ],
       "links": [],
       "members": [
         "mpf1ujctq9hs",
