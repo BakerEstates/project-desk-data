@@ -1,6 +1,15 @@
 {
   "projects": [
     {
+      "id": "mpf6buph15lh",
+      "title": "",
+      "status": "Idea",
+      "notes": "",
+      "createdAt": 1779348791861,
+      "tasks": [],
+      "links": []
+    },
+    {
       "id": "mpf2bfrv6l7s",
       "title": "Create an SOP creator buddy ",
       "status": "Idea",
@@ -10,15 +19,18 @@
         {
           "id": "mpf2dwutdsmt",
           "text": "Create a standardized, SOP format",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpf2h09z2xoz",
           "text": "Add Good delegation mastermind set to the AI so we can create these SOP’s not just to create them but to push Dylon to be able to delegate these tasks check the notes",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         }
       ],
-      "links": []
+      "links": [],
+      "members": []
     },
     {
       "id": "mpf25bm3itus",
@@ -30,7 +42,8 @@
         {
           "id": "mpf28vevczj6",
           "text": "How to auto label transaction emails, then remove the label rules after or hide them",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         }
       ],
       "links": [],
@@ -48,17 +61,20 @@
         {
           "id": "mpf26kw993su",
           "text": "Explain the overview of my perfect work calendar",
-          "status": "In Progress"
+          "status": "In Progress",
+          "assignee": null
         },
         {
           "id": "mpf27cay1k3o",
           "text": "Explain what can be moved and what can’t be moved",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mpf27qno36xg",
           "text": "Explain little rules like “drive time” and colors",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         }
       ],
       "links": [],
@@ -255,7 +271,7 @@
       "members": []
     }
   ],
-  "selectedId": "mpf2bfrv6l7s",
+  "selectedId": "mpf6buph15lh",
   "filter": "all",
   "query": "",
   "team": [
