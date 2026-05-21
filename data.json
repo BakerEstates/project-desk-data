@@ -1,6 +1,15 @@
 {
   "projects": [
     {
+      "id": "mpf25bm3itus",
+      "title": "",
+      "status": "Idea",
+      "notes": "",
+      "createdAt": 1779341768715,
+      "tasks": [],
+      "links": []
+    },
+    {
       "id": "mpf24vjec152",
       "title": "Create an Ai that can manage my calendar ",
       "status": "Idea",
@@ -198,7 +207,7 @@
       "members": []
     }
   ],
-  "selectedId": "mpf24vjec152",
+  "selectedId": "mpf25bm3itus",
   "filter": "all",
   "query": "",
   "team": [
