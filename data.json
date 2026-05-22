@@ -343,6 +343,11 @@
           "text": "Go through template emails and make sure they sound right. (remember, not every communication needs to be an email. They can be phone calls. Otherwise it leads to the deathtrap of tracking responses)",
           "status": "Not Started",
           "assignee": null
+        },
+        {
+          "id": "mpgfo7vw5t4i",
+          "text": "Reorganize the left info bar",
+          "status": "Not Started"
         }
       ],
       "links": [
@@ -355,7 +360,7 @@
       "members": []
     }
   ],
-  "selectedId": "mpf6dzy08spx",
+  "selectedId": "mpeyw0y3osul",
   "filter": "all",
   "query": "",
   "team": [
