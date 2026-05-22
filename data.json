@@ -352,7 +352,8 @@
         {
           "id": "mpgfr7vhz1jb",
           "text": "Change the ACTION of the intake forms. Rather than adding data to the left size bar. Change it to generate a custom PDF (Property Info / Going to the market document stuff like that)",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": "mpf1ujctq9hs"
         }
       ],
       "links": [
