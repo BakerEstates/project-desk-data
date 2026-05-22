@@ -333,12 +333,6 @@
       "createdAt": 1779336296139,
       "tasks": [
         {
-          "id": "mpeyx4staaj2",
-          "text": "Finish the template conditional info sheets",
-          "status": "Not Started",
-          "assignee": null
-        },
-        {
           "id": "mpeyy38ca4sw",
           "text": "Go through template emails and make sure they sound right. (remember, not every communication needs to be an email. They can be phone calls. Otherwise it leads to the deathtrap of tracking responses)",
           "status": "Not Started",
