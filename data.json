@@ -359,7 +359,8 @@
         {
           "id": "mpn7we2u21l5",
           "text": "Create a \"Vendor\" template task list. (1. Call Vendors to coordinate walk through) (2. Receive estiamtes) ....",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": "mpf1ujctq9hs"
         }
       ],
       "links": [
