@@ -355,6 +355,11 @@
           "text": "Change the ACTION of the intake forms. Rather than adding data to the left size bar. Change it to generate a custom PDF (Property Info / Going to the market document stuff like that)",
           "status": "In Progress",
           "assignee": "mpf1ujctq9hs"
+        },
+        {
+          "id": "mpn7xk6cq9vo",
+          "text": "Create a \"Vendor\" template task list. (1. Call Vendors to coordinate walk through and add to timeline) (2. Receive estiamtes) ....",
+          "status": "Not Started"
         }
       ],
       "links": [
