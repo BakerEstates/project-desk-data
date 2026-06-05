@@ -103,12 +103,6 @@
       "createdAt": 1779348891960,
       "tasks": [
         {
-          "id": "mpf6fxh9enlt",
-          "text": "Update the Supra number to go to the correct thing",
-          "status": "Not Started",
-          "assignee": null
-        },
-        {
           "id": "mpf6g3k5mk5u",
           "text": "Make sure the showingtime stuff is workign correctly",
           "status": "In Progress",
