@@ -21,6 +21,11 @@
           "id": "mq0ogi19pmv6",
           "text": "Personal Credit",
           "status": "Not Started"
+        },
+        {
+          "id": "mq0ogk97bodo",
+          "text": "Business Credit",
+          "status": "Not Started"
         }
       ],
       "links": []
