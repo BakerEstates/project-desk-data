@@ -99,7 +99,7 @@
       "id": "mpf6dzy08spx",
       "title": "Listing Intake Form",
       "status": "Active",
-      "notes": "1. Create a template info sheet style. So conditional logic answers rfom the clean up call to that document loofks the same everytime. make space orf maps images and stuf.f it also needs to be editable later in case we need to update it. \n\n2. Listing Intake should include property features -> based on how we answer those questions the nessesary further questions gets added to their overall benefits and features form, which we will send to them when they get the email for scheduling the clean up call. The",
+      "notes": "1. Create a template info sheet style. So conditional logic answers rfom the clean up call to that document loofks the same everytime. make space orf maps images and stuf.f it also needs to be editable later in case we need to update it. \n\n2. Listing Intake should include property features -> based on how we answer those questions the nessesary further questions gets added to their overall benefits and features form, which we will send to them when they get the email for scheduling the clean up call. The clients answer the questions the best they can",
       "createdAt": 1779348891960,
       "tasks": [
         {
