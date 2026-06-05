@@ -6,7 +6,13 @@
       "status": "Active",
       "notes": "",
       "createdAt": 1780649001766,
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "mq0og8gfe6wt",
+          "text": "Business Clean Up",
+          "status": "Not Started"
+        }
+      ],
       "links": []
     },
     {
