@@ -10,45 +10,54 @@
         {
           "id": "mq0og8gfe6wt",
           "text": "Business Clean Up",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mq0ogf28ajxv",
           "text": "Personal Checking",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mq0ogi19pmv6",
           "text": "Personal Credit",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mq0ogk97bodo",
           "text": "Business Credit",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mq0ohdo0neyt",
           "text": "Review the personal budget to determine if we need to add more to any assigned",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mq0ohu00wgeu",
           "text": "Review the total over assigned for the personal and transfer the money from the business",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mq0oiq5aovlq",
           "text": "Then recalculate the business, and log the transfer to show the full \"how short are we amount\"",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mq0oiszrvp7g",
           "text": "Go borrow that money",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         }
       ],
-      "links": []
+      "links": [],
+      "members": []
     },
     {
       "id": "mpfvsdp8jy81",
@@ -90,7 +99,7 @@
       "id": "mpf6dzy08spx",
       "title": "Listing Intake Form",
       "status": "Active",
-      "notes": "1. Create a template info sheet style. So conditional logic answers rfom the clean up call to that document loofks the same everytime. make space orf maps images and stuf.f it also needs to be editable later in case we need to update it. ",
+      "notes": "1. Create a template info sheet style. So conditional logic answers rfom the clean up call to that document loofks the same everytime. make space orf maps images and stuf.f it also needs to be editable later in case we need to update it. \n",
       "createdAt": 1779348891960,
       "tasks": [
         {
@@ -426,7 +435,7 @@
       ]
     }
   ],
-  "selectedId": "mq0ofv3ae0li",
+  "selectedId": "mpf6dzy08spx",
   "filter": "all",
   "query": "",
   "team": [
