@@ -123,16 +123,24 @@
         {
           "id": "mq19e8w3evhi",
           "text": "Create a Listing Appointment Form with the info that Charlotte needs. Dylon keeps as a link on his ipad. submits it and emails charlotte and adds a note to theigh fub page",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mq19egsbetge",
           "text": "1. Create a template info sheet style. So conditional logic answers rfom the clean up call to that document loofks the same everytime. make space orf maps images and stuf.f it also needs to be editable later in case we need to update it.",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mq19epxu1dwg",
           "text": "2. Listing Intake should include property features -> based on how we answer those questions the nessesary further questions gets added to their overall benefits and features form, which we will send to them when they get the email for scheduling the clean up call. The clients answer the questions the best they can, and we let them know to have as much ready on the cclean up call as possible.",
+          "status": "Not Started",
+          "assignee": null
+        },
+        {
+          "id": "mq1k7nq41ur1",
+          "text": "I need to create the info sheets not as AFrame attachment documents with merge codes but essentially Claude does something within the clean up call form to generate them and add them to the transaction as attachments. Or emails them to us? or maybe even HTML's those things and generates the link? IDK",
           "status": "Not Started"
         }
       ],
