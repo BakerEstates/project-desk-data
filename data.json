@@ -41,6 +41,11 @@
           "id": "mq0oiq5aovlq",
           "text": "Then recalculate the business, and log the transfer to show the full \"how short are we amount\"",
           "status": "Not Started"
+        },
+        {
+          "id": "mq0oiszrvp7g",
+          "text": "Go borrow that money",
+          "status": "Not Started"
         }
       ],
       "links": []
