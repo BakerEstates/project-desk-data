@@ -31,6 +31,11 @@
           "id": "mq0ohdo0neyt",
           "text": "Review the personal budget to determine if we need to add more to any assigned",
           "status": "Not Started"
+        },
+        {
+          "id": "mq0ohu00wgeu",
+          "text": "Review the total over assigned for the personal and transfer the money from the business",
+          "status": "Not Started"
         }
       ],
       "links": []
