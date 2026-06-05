@@ -36,6 +36,11 @@
           "id": "mq0ohu00wgeu",
           "text": "Review the total over assigned for the personal and transfer the money from the business",
           "status": "Not Started"
+        },
+        {
+          "id": "mq0oiq5aovlq",
+          "text": "Then recalculate the business, and log the transfer to show the full \"how short are we amount\"",
+          "status": "Not Started"
         }
       ],
       "links": []
