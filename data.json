@@ -26,6 +26,11 @@
           "id": "mq0ogk97bodo",
           "text": "Business Credit",
           "status": "Not Started"
+        },
+        {
+          "id": "mq0ohdo0neyt",
+          "text": "Review the personal budget to determine if we need to add more to any assigned",
+          "status": "Not Started"
         }
       ],
       "links": []
