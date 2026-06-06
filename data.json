@@ -123,7 +123,8 @@
         {
           "id": "mq1k7nq41ur1",
           "text": "I need to create the info sheets not as AFrame attachment documents with merge codes but essentially Claude does something within the clean up call form to generate them and add them to the transaction as attachments. Or emails them to us? or maybe even HTML's those things and generates the link? IDK",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         }
       ],
       "links": [],
@@ -425,6 +426,11 @@
           "text": "Create a \"Vendor\" template task list. (1. Call Vendors to coordinate walk through and add to timeline) (2. Receive estiamtes) ....",
           "status": "In Progress",
           "assignee": "mpf1ujctq9hs"
+        },
+        {
+          "id": "mq1nctjmi9rz",
+          "text": "Lets clean up the contacts. We can use this as past client info of course, but also lets us it as an info data base for vendors and instructions and stuff.",
+          "status": "Not Started"
         }
       ],
       "links": [
@@ -440,7 +446,7 @@
       ]
     }
   ],
-  "selectedId": "mpf6dzy08spx",
+  "selectedId": "mpeyw0y3osul",
   "filter": "all",
   "query": "",
   "team": [
