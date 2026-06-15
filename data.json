@@ -10,15 +10,18 @@
         {
           "id": "mqer8etjv8on",
           "text": "I think I started a Claude project on this",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         },
         {
           "id": "mqer9hw8k143",
           "text": "It should know what my week needs to consist of for the greatness tracker (face to faces, breaking breads,) stuff like that. If it doesn’t see those on the calendar for the week, it should suggest to schedule some",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         }
       ],
-      "links": []
+      "links": [],
+      "members": []
     },
     {
       "id": "mq0ofv3ae0li",
@@ -104,16 +107,6 @@
         "mpf1ujctq9hs",
         "mpf1uzg0k4ok"
       ]
-    },
-    {
-      "id": "mpf6exrlq5jf",
-      "title": "Clean Up Call Form",
-      "status": "Active",
-      "notes": "",
-      "createdAt": 1779348935793,
-      "tasks": [],
-      "links": [],
-      "members": []
     },
     {
       "id": "mpf6dzy08spx",
@@ -468,7 +461,7 @@
     }
   ],
   "selectedId": "mqer7oandsum",
-  "filter": "On Hold",
+  "filter": "all",
   "query": "",
   "team": [
     {
