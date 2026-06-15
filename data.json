@@ -6,7 +6,13 @@
       "status": "Idea",
       "notes": "",
       "createdAt": 1781500185025,
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "mqer8etjv8on",
+          "text": "I think I started a Claude project on this",
+          "status": "Not Started"
+        }
+      ],
       "links": []
     },
     {
