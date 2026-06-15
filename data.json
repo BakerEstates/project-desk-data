@@ -11,6 +11,11 @@
           "id": "mqer8etjv8on",
           "text": "I think I started a Claude project on this",
           "status": "Not Started"
+        },
+        {
+          "id": "mqer9hw8k143",
+          "text": "It should know what my week needs to consist of for the greatness tracker (face to faces, breaking breads,) stuff like that. If it doesn’t see those on the calendar for the week, it should suggest to schedule some",
+          "status": "Not Started"
         }
       ],
       "links": []
