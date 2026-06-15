@@ -1,6 +1,15 @@
 {
   "projects": [
     {
+      "id": "mqer7oandsum",
+      "title": "",
+      "status": "Idea",
+      "notes": "",
+      "createdAt": 1781500185025,
+      "tasks": [],
+      "links": []
+    },
+    {
       "id": "mq0ofv3ae0li",
       "title": "Money Notes",
       "status": "Active",
@@ -430,7 +439,8 @@
         {
           "id": "mq1nctjmi9rz",
           "text": "Lets clean up the contacts. We can use this as past client info of course, but also lets us it as an info data base for vendors and instructions and stuff.",
-          "status": "Not Started"
+          "status": "Not Started",
+          "assignee": null
         }
       ],
       "links": [
@@ -446,8 +456,8 @@
       ]
     }
   ],
-  "selectedId": "mpeyw0y3osul",
-  "filter": "all",
+  "selectedId": "mqer7oandsum",
+  "filter": "On Hold",
   "query": "",
   "team": [
     {
